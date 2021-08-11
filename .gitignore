@@ -1,0 +1,18 @@
+
+# node ignores
+app/node_modules/
+app/package-lock.json
+
+# build ignores
+target/
+src/main/webapp/
+
+# any of these files
+**/*.swp
+**/*.factorypath
+
+# project
+.settings/
+.vscode/
+.classpath
+.project

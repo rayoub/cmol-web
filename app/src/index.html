@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="generator" content="HTML Tidy for HTML5 for Linux version 5.2.0">
+    <title>Ayoub Research</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="content-language" content="en">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="styles/styles.css">
+</head>
+<body>
+    <header class="page-header my-page-header">
+        <h2>RUPEE Protein Structure Search</h2>
+        <a href="/" style="margin-right: 15px;" class="disabled">search</a> 
+        <a href="/help.html" style="margin-right: 15px;">help</a> 
+        <a href="/about.html" style="margin-right: 15px;">about</a>
+    </header>
+    <section id="criteria">
+        <div class="panel panel-default panel-margin">
+            <div class="panel-body">
+                <div>
+                    If you find this site useful, please cite one or both of:
+                    </br>
+                    Ayoub R, Lee Y. RUPEE: A fast and accurate purely geometric protein structure search. 
+                    <a target="_blank" href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0213712">PLoS ONE. 2019;14(3):1–17</a>
+                    </br> 
+                    Ayoub R, Lee Y. Protein structure search to support the development of protein structure prediction methods.
+                    <a target="_blank" href="https://onlinelibrary.wiley.com/doi/full/10.1002/prot.26048">Proteins: Structure, Function, and Bioinformatics. 2021;89(6):648-658</a>
+                    </br>
+                    Send feedback or inquiries to <a href="mail:ronaldayoub@outlook.com">ronaldayoub@outlook.com</a>. 
+                </div>
+                <div class="help-block"></div>
+                <div class="help-block"></div>
+                <form class="form-horizontal">
+                    <div class="form-group">
+                        <label class="control-label col-xs-12 col-sm-3 col-md-2">Search Database:</label>
+                        <div class="col-xs-12 col-sm-9 col-md-10">
+                            <select id="dbType" class="form-control">
+                                <option value="4" selected>PDB Chains (as of 2021-06-08)</option>
+                                <option value="1">SCOPe 2.07</option>
+                                <option value="2">CATH v4.3</option>
+                                <option value="3">ECOD develop280</option>
+                            <select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-xs-12 col-sm-3 col-md-2">Search By:</label>
+                        <div class="col-xs-12 col-sm-9 col-md-10">
+                            <label class="form-control radio-inline"><input type="radio" name="searchBy" value="1" checked>Structure Id</label>
+                            <label class="form-control radio-inline"><input type="radio" name="searchBy" value="2">PDB File</label>
+                        </div>
+                    </div>
+                    <div id="dbIdDiv" class="form-group">
+                        <label class="control-label col-xs-12 col-sm-3 col-md-2">Structure Id:</label>
+                        <div class="col-xs-12 col-sm-9 col-md-10">
+                            <input id="dbId" type="text" class="form-control" maxlength="12" required>
+                            <p class="help-block" style="margin-left: 12px;">e.g. 1eudA, 1eudA01, d1euda1 or e1eudA1</p>
+                        </div>
+                    </div>
+                    <div id="pdbFileDiv" class="form-group" style="display: none;">
+                        <label class="control-label col-xs-12 col-sm-3 col-md-2">PDB File:</label>
+                        <div class="col-xs-12 col-sm-9 col-md-10">
+                            <input id="pdbFile" type="file" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-xs-12 col-sm-3 col-md-2">Search Filter:</label>
+                        <div class="col-xs-12 col-sm-9 col-md-10">
+                            <select id="searchFilter" class="form-control col-md-8">
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-xs-12 col-sm-3 col-md-2">Search Types:</label>
+                        <div class="col-xs-12 col-sm-9 col-md-10">
+                            <select id="searchType" class="form-control">
+                                <option value="1" selected>Full-Length</option>
+                                <option value="2">Contained-In</option>
+                                <option value="3">Contains</option>
+                                <option value="4">RMSD</option>
+                                <option value="5">Q-Score</option>
+                                <option value="6">SSAP-Score</option>
+                            <select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-xs-12 col-sm-3 col-md-2">Search Mode:</label>
+                        <div class="col-xs-12 col-sm-9 col-md-10">
+                            <label class="form-control radio-inline"><input type="radio" name="searchMode" value="1">Fast</label>
+                            <label class="form-control radio-inline"><input type="radio" name="searchMode" value="2" checked>Top-Aligned</label>
+                            <label class="form-control radio-inline"><input type="radio" name="searchMode" value="3">All-Aligned</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-xs-12 col-sm-3 col-md-2">Result Count:</label>
+                        <div class="col-xs-12 col-sm-9 col-md-10">
+                            <select id="limit" class="form-control">
+                                <option value="400" selected>400</option>
+                                <option value="600">600</option>
+                                <option value="800">800</option>
+                                <option value="1000">1000</option>
+                            <select>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="panel-footer">
+                <div class="form-group">
+                    <button id="search" type="button" class="btn btn-primary">search</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="grid">
+        <div class="help-block"></div>
+        <div class="help-block"></div>
+        <div class="panel panel-default panel-margin">
+            <div class="panel-body">
+                <table id="altTable" style="width:100%; display:none;">
+                    <tbody>
+                        <tr>
+                            <td>
+                                <p class="text-danger">An examination of the top results indicates you will find better matches by using the CONTAINED_IN search type along with ALL_ALIGNED search mode. However, the absence of this message does not imply you will not see better matches when using the the suggested search type and mode.</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table id="waitTable" style="width:100%; display:none;">
+                    <tbody>
+                        <tr>
+                            <td class="text-center">
+                                <p>Please wait while your results are obtained. This can take roughly a minute in Fast mode, several minutes in Top-Aligned mode, and up to 10 minutes or more in All-Aligned mode.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="text-center">
+                                <i class="fas fa-sync fa-lg fa-spin" style="margin: 10px;"></i>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table id="errorTable" style="width:100%; display:none;">
+                    <tbody>
+                        <tr>
+                            <td class="text-center">
+                                <p>An error occurred</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="text-center">
+                                <p id="errorMessage" class="text-danger"></p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table id="emptyTable" style="width:100%; display: none;">
+                    <tbody>
+                        <tr>
+                            <td class="text-center">
+                                <p>No Records</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="text-center">
+                                <p class="text-info">If you just executed a search, check that the structure id is correct or that the structure was not recently submitted to the PDB. Chain identifiers for structure ids other than SCOPe ids are case sensitive. Of course, enter only one structure id at a time.</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div id="exportTable" style="margin-bottom: 8px; display: none;"><a style="cursor: pointer;">Export to CSV</a></div>
+                <table id="dataTable" class="table table-condensed" style="display: none;">
+                    <thead>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+    <footer class="pull-right my-page-footer">
+        <p>© 2021 ayoubresearch.com</p>
+    </footer>
+    <script src="scripts/jquery-3.3.1.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="scripts/grid_types.js"></script>
+    <script src="scripts/filter_types.js"></script>
+    <script src="scripts/numeral.min.js"></script>
+    <script src="scripts/functions.js"></script>
+    <script src="scripts/export.js"></script>
+    <script src="scripts/index.js"></script>
+</body>
+</html>
+
+
+
