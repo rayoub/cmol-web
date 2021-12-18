@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta name="generator" content="HTML Tidy for HTML5 for Linux version 5.2.0">
-    <title>Ayoub Research</title>
+    <title>cmol-web</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -13,28 +13,20 @@
 </head>
 <body>
     <header class="page-header my-page-header">
-        <h2>RUPEE Protein Structure Search</h2>
-        <a href="/" style="margin-right: 15px;" class="disabled">search</a> 
-        <a href="/help.html" style="margin-right: 15px;">help</a> 
-        <a href="/about.html" style="margin-right: 15px;">about</a>
+        <h3>Clinical Molecular Oncology Laboratory Website</h3>
     </header>
     <section id="criteria">
         <div class="panel panel-default panel-margin">
             <div class="panel-body">
                 <div>
-                    If you find this site useful, please cite one or both of:
+                    Some words of encouragement. 
                     </br>
-                    Ayoub R, Lee Y. RUPEE: A fast and accurate purely geometric protein structure search. 
-                    <a target="_blank" href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0213712">PLoS ONE. 2019;14(3):1–17</a>
-                    </br> 
-                    Ayoub R, Lee Y. Protein structure search to support the development of protein structure prediction methods.
-                    <a target="_blank" href="https://onlinelibrary.wiley.com/doi/full/10.1002/prot.26048">Proteins: Structure, Function, and Bioinformatics. 2021;89(6):648-658</a>
-                    </br>
-                    Send feedback or inquiries to <a href="mail:ronaldayoub@outlook.com">ronaldayoub@outlook.com</a>. 
+                    Some more words. 
                 </div>
                 <div class="help-block"></div>
                 <div class="help-block"></div>
-                <form class="form-horizontal">
+                <form class="form-horizontal"> 
+                    <!--
                     <div class="form-group">
                         <label class="control-label col-xs-12 col-sm-3 col-md-2">Search Database:</label>
                         <div class="col-xs-12 col-sm-9 col-md-10">
@@ -46,20 +38,29 @@
                             <select>
                         </div>
                     </div>
+                    -->
                     <div class="form-group">
-                        <label class="control-label col-xs-12 col-sm-3 col-md-2">Search By:</label>
+                        <label class="control-label col-xs-12 col-sm-3 col-md-2">Change Type:</label>
                         <div class="col-xs-12 col-sm-9 col-md-10">
-                            <label class="form-control radio-inline"><input type="radio" name="searchBy" value="1" checked>Structure Id</label>
-                            <label class="form-control radio-inline"><input type="radio" name="searchBy" value="2">PDB File</label>
+                            <label class="form-control radio-inline"><input type="radio" name="changeType" value="1" checked>Transcript Change</label>
+                            <label class="form-control radio-inline"><input type="radio" name="changeType" value="2">Protein Change</label>
                         </div>
                     </div>
-                    <div id="dbIdDiv" class="form-group">
-                        <label class="control-label col-xs-12 col-sm-3 col-md-2">Structure Id:</label>
+                    <div id="tcChangeDiv" class="form-group">
+                        <label class="control-label col-xs-12 col-sm-3 col-md-2">Transcript Change:</label>
                         <div class="col-xs-12 col-sm-9 col-md-10">
-                            <input id="dbId" type="text" class="form-control" maxlength="12" required>
-                            <p class="help-block" style="margin-left: 12px;">e.g. 1eudA, 1eudA01, d1euda1 or e1eudA1</p>
+                            <input id="tcChange" type="text" class="form-control" maxlength="24">
+                            <p class="help-block" style="margin-left: 12px;">e.g. BINGO</p>
                         </div>
                     </div>
+                    <div id="pcChangeDiv" class="form-group" style="display: none;">
+                        <label class="control-label col-xs-12 col-sm-3 col-md-2">Protein Change:</label>
+                        <div class="col-xs-12 col-sm-9 col-md-10">
+                            <input id="pcChange" type="text" class="form-control" maxlength="16">
+                            <p class="help-block" style="margin-left: 12px;">e.g. G12C</p>
+                        </div>
+                    </div>
+                    <!--
                     <div id="pdbFileDiv" class="form-group" style="display: none;">
                         <label class="control-label col-xs-12 col-sm-3 col-md-2">PDB File:</label>
                         <div class="col-xs-12 col-sm-9 col-md-10">
@@ -105,6 +106,7 @@
                             <select>
                         </div>
                     </div>
+                    -->
                 </form>
             </div>
             <div class="panel-footer">
@@ -119,20 +121,11 @@
         <div class="help-block"></div>
         <div class="panel panel-default panel-margin">
             <div class="panel-body">
-                <table id="altTable" style="width:100%; display:none;">
-                    <tbody>
-                        <tr>
-                            <td>
-                                <p class="text-danger">An examination of the top results indicates you will find better matches by using the CONTAINED_IN search type along with ALL_ALIGNED search mode. However, the absence of this message does not imply you will not see better matches when using the the suggested search type and mode.</p>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
                 <table id="waitTable" style="width:100%; display:none;">
                     <tbody>
                         <tr>
                             <td class="text-center">
-                                <p>Please wait while your results are obtained. This can take roughly a minute in Fast mode, several minutes in Top-Aligned mode, and up to 10 minutes or more in All-Aligned mode.</p>
+                                <p>Please wait while your results are obtained.</p>
                             </td>
                         </tr>
                         <tr>
@@ -163,11 +156,6 @@
                                 <p>No Records</p>
                             </td>
                         </tr>
-                        <tr>
-                            <td class="text-center">
-                                <p class="text-info">If you just executed a search, check that the structure id is correct or that the structure was not recently submitted to the PDB. Chain identifiers for structure ids other than SCOPe ids are case sensitive. Of course, enter only one structure id at a time.</p>
-                            </td>
-                        </tr>
                     </tbody>
                 </table>
                 <div id="exportTable" style="margin-bottom: 8px; display: none;"><a style="cursor: pointer;">Export to CSV</a></div>
@@ -181,7 +169,7 @@
         </div>
     </section>
     <footer class="pull-right my-page-footer">
-        <p>© 2021 ayoubresearch.com</p>
+        <p>© 2021 kumc.edu</p>
     </footer>
     <script src="scripts/jquery-3.3.1.min.js"></script>
     <script src="bootstrap/js/bootstrap.min.js"></script>
