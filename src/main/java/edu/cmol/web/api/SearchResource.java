@@ -12,7 +12,7 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.ResponseBuilder;
 
-import edu.kumc.qci.db.Criteria;
+import edu.kumc.qci.db.QueryCriteria;
 import edu.kumc.qci.db.QueryRow;
 import edu.kumc.qci.db.Reporter;
 
@@ -24,6 +24,7 @@ public class SearchResource extends BaseResource {
     @GET
     @Produces("application/json")
     public Response get(
+        @QueryParam("genes") String genes, 
         @QueryParam("changeType") int changeType,
         @QueryParam("tcChange") String tcChange, 
         @QueryParam("pcChange") String pcChange) throws Exception {
@@ -32,8 +33,9 @@ public class SearchResource extends BaseResource {
         String json = "{}";
         try {
 
-            Criteria criteria = new Criteria();
+            QueryCriteria criteria = new QueryCriteria();
 
+            criteria.setGenes(genes);
             criteria.setChangeType(changeType);
             criteria.setTranscriptChange(tcChange);
             criteria.setProteinChange(pcChange);

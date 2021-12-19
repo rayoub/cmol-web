@@ -107,11 +107,13 @@ $(document).ready(function(){
 
 var getParams = function () {
 
+    var genes = $.trim($("#genes").val());
     var changeType = $("input[type=radio][name=changeType]:checked").val();
     var tcChange = $.trim($("#tcChange").val());
     var pcChange = $.trim($("#pcChange").val());
 
     var params = {
+        genes: genes,
         changeType: changeType,
         tcChange: tcChange,
         pcChange: pcChange

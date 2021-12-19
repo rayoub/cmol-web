@@ -21,26 +21,22 @@
         <div class="panel panel-default panel-margin">
             <div class="panel-body">
                 <div>
-                    Some words of encouragement. 
-                    </br>
+                    The <strong>QCI Database</strong> represents the data CMOL enters into QCI for the production of result reports. 
+                    It is roundtrip data in that our QCI database is built from the actual data QCI stores remotely. 
+                    More concretely, the QCI Database represents the data on the report pdfs.
+                </br>
                     Some more words. 
                 </div>
                 <div class="help-block"></div>
                 <div class="help-block"></div>
                 <form class="form-horizontal"> 
-                    <!--
-                    <div class="form-group">
-                        <label class="control-label col-xs-12 col-sm-3 col-md-2">Search Database:</label>
+                    <div id="genesDiv" class="form-group">
+                        <label class="control-label col-xs-12 col-sm-3 col-md-2">Genes:</label>
                         <div class="col-xs-12 col-sm-9 col-md-10">
-                            <select id="dbType" class="form-control">
-                                <option value="4" selected>PDB Chains (as of 2021-06-08)</option>
-                                <option value="1">SCOPe 2.07</option>
-                                <option value="2">CATH v4.3</option>
-                                <option value="3">ECOD develop280</option>
-                            <select>
+                            <input id="genes" type="text" class="form-control" maxlength="64">
+                            <p class="help-block" style="margin-left: 12px;">a semi-colon separated list of gene names</p>
                         </div>
                     </div>
-                    -->
                     <div class="form-group">
                         <label class="control-label col-xs-12 col-sm-3 col-md-2">Change Type:</label>
                         <div class="col-xs-12 col-sm-9 col-md-10">
@@ -62,53 +58,6 @@
                             <p class="help-block" style="margin-left: 12px;">e.g. G12C</p>
                         </div>
                     </div>
-                    <!--
-                    <div id="pdbFileDiv" class="form-group" style="display: none;">
-                        <label class="control-label col-xs-12 col-sm-3 col-md-2">PDB File:</label>
-                        <div class="col-xs-12 col-sm-9 col-md-10">
-                            <input id="pdbFile" type="file" class="form-control">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label col-xs-12 col-sm-3 col-md-2">Search Filter:</label>
-                        <div class="col-xs-12 col-sm-9 col-md-10">
-                            <select id="searchFilter" class="form-control col-md-8">
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label col-xs-12 col-sm-3 col-md-2">Search Types:</label>
-                        <div class="col-xs-12 col-sm-9 col-md-10">
-                            <select id="searchType" class="form-control">
-                                <option value="1" selected>Full-Length</option>
-                                <option value="2">Contained-In</option>
-                                <option value="3">Contains</option>
-                                <option value="4">RMSD</option>
-                                <option value="5">Q-Score</option>
-                                <option value="6">SSAP-Score</option>
-                            <select>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label col-xs-12 col-sm-3 col-md-2">Search Mode:</label>
-                        <div class="col-xs-12 col-sm-9 col-md-10">
-                            <label class="form-control radio-inline"><input type="radio" name="searchMode" value="1">Fast</label>
-                            <label class="form-control radio-inline"><input type="radio" name="searchMode" value="2" checked>Top-Aligned</label>
-                            <label class="form-control radio-inline"><input type="radio" name="searchMode" value="3">All-Aligned</label>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label col-xs-12 col-sm-3 col-md-2">Result Count:</label>
-                        <div class="col-xs-12 col-sm-9 col-md-10">
-                            <select id="limit" class="form-control">
-                                <option value="400" selected>400</option>
-                                <option value="600">600</option>
-                                <option value="800">800</option>
-                                <option value="1000">1000</option>
-                            <select>
-                        </div>
-                    </div>
-                    -->
                 </form>
             </div>
             <div class="panel-footer">
