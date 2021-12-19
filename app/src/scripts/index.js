@@ -55,7 +55,7 @@ $(document).ready(function(){
                             thead += "<th nowrap width='" + column.width + "'><span title='" + column.title + "'>" + column.header + "<i class='my-tooltip fas fa-question-circle fa-xs'></i></span></th>";
                         }
                         else {
-                            thead += "<th width='" + column.width + "'><span>" + column.header + "</span></th>";
+                            thead += "<th nowrap width='" + column.width + "'><span>" + column.header + "</span></th>";
                         }
                     });
                     thead = "<tr>" + thead + "</tr>";

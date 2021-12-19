@@ -9,7 +9,6 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
-import javax.ws.rs.core.CacheControl;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.ResponseBuilder;
 
@@ -19,7 +18,9 @@ import edu.kumc.qci.db.Reporter;
 
 @Path("search")
 public class SearchResource extends BaseResource {
-    
+
+    private static int MAX_QUERY_ROWS = 2000;
+
     @GET
     @Produces("application/json")
     public Response get(
@@ -28,7 +29,6 @@ public class SearchResource extends BaseResource {
         @QueryParam("pcChange") String pcChange) throws Exception {
     
         // get response json
-        boolean cache = true;
         String json = "{}";
         try {
 
@@ -39,20 +39,33 @@ public class SearchResource extends BaseResource {
             criteria.setProteinChange(pcChange);
 
             List<QueryRow> rows = Reporter.getQueryRows(criteria);
-            
-            StringWriter writer = new StringWriter();
-            JsonGenerator generator = Json.createGenerator(writer);
-            generator.writeStartObject();
-            generator.write("code", "0");
-            generator.writeKey("records");
-            writeSearchRecordArray(generator, rows);
-            generator.writeEnd();
-            generator.close();
-            json = writer.toString();
+
+            if (rows.size() > MAX_QUERY_ROWS) {
+
+                StringWriter writer = new StringWriter();
+                JsonGenerator generator = Json.createGenerator(writer);
+                generator.writeStartObject();
+                generator.write("code", -1);
+                generator.write("message", "Query results exceed maximum of " + MAX_QUERY_ROWS + " rows. Please narrow your search criteria.");
+                generator.writeEnd();
+                generator.close();
+                json = writer.toString();
+            }
+            else {
+
+                StringWriter writer = new StringWriter();
+                JsonGenerator generator = Json.createGenerator(writer);
+                generator.writeStartObject();
+                generator.write("code", "0");
+                generator.writeKey("records");
+                writeSearchRecordArray(generator, rows);
+                generator.writeEnd();
+                generator.close();
+                json = writer.toString();
+            }
         }
         catch (Exception e) {
 
-            cache = false;
             StringWriter writer = new StringWriter();
             JsonGenerator generator = Json.createGenerator(writer);
             generator.writeStartObject();
@@ -70,12 +83,6 @@ public class SearchResource extends BaseResource {
 
         // response
         ResponseBuilder builder = Response.ok(json);
-        if (cache) {     
-            CacheControl cc = new CacheControl();
-            cc.setPrivate(true);
-            cc.setMaxAge(86400);
-            builder.cacheControl(cc);
-        }
         return builder.build();
     }
 
@@ -89,12 +96,11 @@ public class SearchResource extends BaseResource {
             generator.writeStartObject();
        
             generator.write("n", i+1);
-            generator.write("mrn", row.getMrn());
-            generator.write("accession", row.getAccession());
             generator.write("testDate", row.getTestDate());
-            generator.write("testCode", row.getTestCode());
+            generator.write("testCode", row.getTestCode().replace("NGS ", ""));
             generator.write("diagnosis", row.getDiagnosis());
             generator.write("interpretation", row.getInterpretation());
+            generator.write("physician", row.getPhysician());
             generator.write("gene", row.getGene());
             generator.write("alleleFraction", row.getAlleleFraction());
             generator.write("transcript", row.getTranscript());
