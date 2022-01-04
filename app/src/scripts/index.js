@@ -15,9 +15,12 @@ $(document).ready(function(){
     // *** search
 
     $("#search").click(function () {
-        
-        $("#exportTable").hide();
+      
+        $("#errorTable").hide();
+        $("#emptyTable").hide();
         $("#dataTableDiv").hide(); 
+        $("#exportTable").hide();
+
         $("#waitTable").show();
         $("#search").prop("disabled", true);
         

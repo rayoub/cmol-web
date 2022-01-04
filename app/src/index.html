@@ -55,49 +55,38 @@
         </div>
     </section>
     <section id="grid">
-        <div class="help-block"></div>
-        <div class="help-block"></div>
-        <div> <!--class="card m-4">-->
-            <div><!--class="card-body">-->
-                <table id="waitTable" style="width:100%; display:none;">
-                    <tbody>
-                        <tr>
-                            <td class="text-center">
-                                <p>Please wait while your results are obtained.</p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="text-center">
-                                <i class="fas fa-sync fa-lg fa-spin" style="margin: 10px;"></i>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                <table id="errorTable" style="width:100%; display:none;">
-                    <tbody>
-                        <tr>
-                            <td class="text-center">
-                                <p>An error occurred</p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="text-center">
-                                <p id="errorMessage" class="text-danger"></p>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                <table id="emptyTable" style="width:100%; display: none;">
-                    <tbody>
-                        <tr>
-                            <td class="text-center">
-                                <p>No Records</p>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                <div id="exportTable" style="margin-bottom: 8px; display: none;">
-                    <a style="cursor: pointer;">Export to CSV</a>
+        <div class="card m-4">
+            <div class="card-body">
+                <div id="waitTable" class="container-fluid" style="display:none;">
+                    <div class="row">
+                        <div class="col text-center">
+                            <p>Please wait while your results are obtained.</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col text-center">
+                            <i class="fas fa-sync fa-lg fa-spin"></i>
+                        </div>
+                    </div>
+                </div>
+                <div id="errorTable" class="container-fluid" style="display:none;">
+                    <div class="row">
+                        <div class="col text-center">
+                            <p>An error occurred</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col text-center">
+                            <p id="errorMessage" class="text-danger"></p>
+                        </div>
+                    </div>
+                </div>
+                <div id="emptyTable" class="container-fluid" style="display: none;">
+                    <div class="row">
+                        <div class="col text-center">
+                            <p>No Records</p>
+                        </div>
+                    </div>
                 </div>
                 <div id="dataTableDiv" class="table-responsive" style="display: none;">
                     <table id="dataTable" class="table table-sm">
@@ -108,9 +97,12 @@
                     </table>
                 </div>
             </div>
+            <div id="exportTable" class="card-footer" style="display: none;">
+                <button type="button" class="btn btn-primary">export to csv</button>
+            </div>
         </div>
     </section>
-    <footer class="pull-right my-page-footer">
+    <footer class="m-4 float-end">
         <p>© 2022 kumc.edu</p>
     </footer>
     <script src="scripts/jquery-3.3.1.min.js"></script>
