@@ -18,6 +18,7 @@ $(document).ready(function(){
       
         $("#errorTable").hide();
         $("#emptyTable").hide();
+        $("tableHeader").hide();
         $("#dataTableDiv").hide(); 
         $("#exportTable").hide();
 
@@ -74,8 +75,9 @@ $(document).ready(function(){
                     // insert into DOM
                     $("#dataTable thead").html(thead);
                     $("#dataTable tbody").html(tbody);
-                    $("#exportTable").show();
+                    $("#tableHeader").show();
                     $("#dataTableDiv").show();
+                    $("#exportTable").show();
                 }
                 else {
 
