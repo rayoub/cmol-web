@@ -1,76 +1,64 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta name="generator" content="HTML Tidy for HTML5 for Linux version 5.2.0">
     <title>cmol-web</title>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta http-equiv="content-language" content="en">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="fontawesome/css/all.min.css">
     <link rel="stylesheet" href="styles/styles.css">
 </head>
 <body>
-    <header class="page-header my-page-header">
+    <header class="m-4">
         <h3>Clinical Molecular Oncology Laboratory Website</h3>
-        <a href="/" style="margin-right: 15px;" class="disabled">QCI Database</a> 
-        <a href="/labdb.html" style="margin-right: 15px;">Lab Database</a> 
+        <ul class="nav"> 
+            <a class="nav-link disabled" href="/">QCI Database</a> 
+            <a class="nav-link" href="/labdb.html">Lab Database</a> 
+        </ul>
     </header>
     <section id="criteria">
-        <div class="panel panel-default panel-margin">
-            <div class="panel-body">
-                <div>     
-                    Our <strong>QCI Database</strong> is built from the official data we entered into QCI that is stored in QCI and used to produce patient report pdfs. 
-                    We obtain this data from the external QCI data store via a Web-based API. 
-                    For more complete and manually curated data, query the <strong>Lab Database</strong>. 
-                    However, the <strong>Lab Database</strong> is not as 'official' as the <strong>QCI Database</strong>.
-                </div>
-                <div class="help-block"></div>
-                <div class="help-block"></div>
-                <form class="form-horizontal"> 
-                    <div id="genesDiv" class="form-group">
-                        <label class="control-label col-xs-12 col-sm-3 col-md-2">Genes:</label>
+        <div class="card m-4">
+            <div class="card-header">
+                The <strong>QCI Database</strong> is built from the official data CMOL has entered into QCI that is stored in QCI and is used to produce patient report pdfs. 
+                CMOL obtains this data from the external QCI data store via a Web-based API. 
+                For more complete and manually curated data, query the <strong>Lab Database</strong>. 
+                However, the <strong>Lab Database</strong> is not as 'official' as the <strong>QCI Database</strong>.
+            </div>
+            <div class="card-body">
+                <form> 
+                    <div id="genesDiv" class="row">
+                        <label class="form-label col-xs-12 col-sm-3 col-md-2">Genes:</label>
                         <div class="col-xs-12 col-sm-9 col-md-10">
                             <input id="genes" type="text" class="form-control" maxlength="64">
-                            <p class="help-block" style="margin-left: 12px;">a semi-colon separated list of gene names</p>
+                            <p class="form-text">a semi-colon separated list of gene names</p>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label class="control-label col-xs-12 col-sm-3 col-md-2">Change Type:</label>
-                        <div class="col-xs-12 col-sm-9 col-md-10">
-                            <label class="form-control radio-inline"><input type="radio" name="changeType" value="1" checked>Transcript</label>
-                            <label class="form-control radio-inline"><input type="radio" name="changeType" value="2">Protein</label>
-                        </div>
-                    </div>
-                    <div id="tcChangeDiv" class="form-group">
-                        <label class="control-label col-xs-12 col-sm-3 col-md-2">Transcript Change Like:</label>
+                    <div id="tcChangeDiv" class="row">
+                        <label class="form-label col-xs-12 col-sm-3 col-md-2">Transcript Change Like:</label>
                         <div class="col-xs-12 col-sm-9 col-md-10">
                             <input id="tcChange" type="text" class="form-control" maxlength="24">
-                            <p class="help-block" style="margin-left: 12px;">e.g. 34G>T</p>
+                            <p class="form-text">e.g. 34G>T</p>
                         </div>
                     </div>
-                    <div id="pcChangeDiv" class="form-group" style="display: none;">
-                        <label class="control-label col-xs-12 col-sm-3 col-md-2">Protein Change Like:</label>
+                    <div id="pcChangeDiv" class="row">
+                        <label class="form-label col-xs-12 col-sm-3 col-md-2">Protein Change Like:</label>
                         <div class="col-xs-12 col-sm-9 col-md-10">
                             <input id="pcChange" type="text" class="form-control" maxlength="16">
-                            <p class="help-block" style="margin-left: 12px;">e.g. G12C</p>
+                            <p class="form-text">e.g. G12C</p>
                         </div>
                     </div>
                 </form>
             </div>
-            <div class="panel-footer">
-                <div class="form-group">
-                    <button id="search" type="button" class="btn btn-primary">search</button>
-                </div>
+            <div class="card-footer">
+                <button id="search" type="button" class="btn btn-primary">search</button>
             </div>
         </div>
     </section>
     <section id="grid">
         <div class="help-block"></div>
         <div class="help-block"></div>
-        <div class="panel panel-default panel-margin">
-            <div class="panel-body">
+        <div> <!--class="card m-4">-->
+            <div><!--class="card-body">-->
                 <table id="waitTable" style="width:100%; display:none;">
                     <tbody>
                         <tr>
@@ -108,23 +96,26 @@
                         </tr>
                     </tbody>
                 </table>
-                <div id="exportTable" style="margin-bottom: 8px; display: none;"><a style="cursor: pointer;">Export to CSV</a></div>
-                <table id="dataTable" class="table table-condensed" style="display: none;">
-                    <thead>
-                    </thead>
-                    <tbody>
-                    </tbody>
-                </table>
+                <div id="exportTable" style="margin-bottom: 8px; display: none;">
+                    <a style="cursor: pointer;">Export to CSV</a>
+                </div>
+                <div id="dataTableDiv" class="table-responsive" style="display: none;">
+                    <table id="dataTable" class="table table-sm">
+                        <thead>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </section>
     <footer class="pull-right my-page-footer">
-        <p>© 2021 kumc.edu</p>
+        <p>© 2022 kumc.edu</p>
     </footer>
     <script src="scripts/jquery-3.3.1.min.js"></script>
     <script src="bootstrap/js/bootstrap.min.js"></script>
     <script src="scripts/grid_types.js"></script>
-    <script src="scripts/filter_types.js"></script>
     <script src="scripts/numeral.min.js"></script>
     <script src="scripts/functions.js"></script>
     <script src="scripts/export.js"></script>

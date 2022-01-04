@@ -3,19 +3,6 @@ $(document).ready(function(){
 
     // *** form event handlers
 
-    $("input[type=radio][name=changeType]").change(function () {
-
-        if (this.value === "1") {
-            $("#tcChangeDiv").show();
-            $("#pcChangeDiv").hide();
-        }
-        else {
-            $("#tcChangeDiv").hide();
-            $("#pcChangeDiv").show();
-        }
-
-    }); // end change
-
     // *** initialize form
 
     // *** export 
@@ -30,7 +17,7 @@ $(document).ready(function(){
     $("#search").click(function () {
         
         $("#exportTable").hide();
-        $("table").hide(); 
+        $("#dataTableDiv").hide(); 
         $("#waitTable").show();
         $("#search").prop("disabled", true);
         
@@ -85,7 +72,7 @@ $(document).ready(function(){
                     $("#dataTable thead").html(thead);
                     $("#dataTable tbody").html(tbody);
                     $("#exportTable").show();
-                    $("#dataTable").show();
+                    $("#dataTableDiv").show();
                 }
                 else {
 
