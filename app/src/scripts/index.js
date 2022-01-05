@@ -95,6 +95,19 @@ $(document).ready(function(){
             } // end error
         }); // end done
     }); // end click
+    
+    // *** copy 
+    $("#copy").click(function() { 
+        var dummy = document.createElement("textarea");
+        document.body.appendChild(dummy);
+        var params = getParams();
+        dummy.value = "genes=" + params.genes + "\ntcChange=" + params.tcChange + "\npcChange=" + params.pcChange;
+        alert(dummy.value);
+        dummy.select();
+        document.execCommand("copy");
+        document.body.removeChild(dummy);
+    }); // end click
+
 }); // end jquery
 
 var getParams = function () {
@@ -106,7 +119,6 @@ var getParams = function () {
 
     var params = {
         genes: genes,
-        changeType: changeType,
         tcChange: tcChange,
         pcChange: pcChange
     };

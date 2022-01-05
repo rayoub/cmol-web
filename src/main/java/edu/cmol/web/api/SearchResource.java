@@ -25,7 +25,6 @@ public class SearchResource extends BaseResource {
     @Produces("application/json")
     public Response get(
         @QueryParam("genes") String genes, 
-        @QueryParam("changeType") int changeType,
         @QueryParam("tcChange") String tcChange, 
         @QueryParam("pcChange") String pcChange) throws Exception {
     
@@ -36,7 +35,6 @@ public class SearchResource extends BaseResource {
             QueryCriteria criteria = new QueryCriteria();
 
             criteria.setGenes(genes);
-            criteria.setChangeType(changeType);
             criteria.setTranscriptChange(tcChange);
             criteria.setProteinChange(pcChange);
 
