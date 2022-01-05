@@ -97,9 +97,7 @@ public class SearchResource extends BaseResource {
 
             generator.writeStartObject();
        
-            generator.write("n", i+1);
-            generator.write("mrn", row.getMrn());
-            generator.write("accession", row.getAccession());
+            generator.write("n", row.getN());
             generator.write("testDate", row.getTestDate());
             generator.write("testCode", row.getTestCode().replace("NGS ", ""));
             generator.write("diagnosis", row.getDiagnosis());

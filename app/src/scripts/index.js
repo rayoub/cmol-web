@@ -43,10 +43,10 @@ $(document).ready(function(){
                     var thead = "";
                     $.each(gt.columns, function (i, column) {
                         if (column.hasOwnProperty("title")) {
-                            thead += "<th nowrap width='" + column.width + "'><span title='" + column.title + "'>" + column.header + "<i class='my-tooltip fas fa-question-circle fa-xs'></i></span></th>";
+                            thead += "<th><span title='" + column.title + "'>" + column.header + "<i class='my-tooltip fas fa-question-circle fa-xs'></i></span></th>";
                         }
                         else {
-                            thead += "<th nowrap width='" + column.width + "'><span>" + column.header + "</span></th>";
+                            thead += "<th><span>" + column.header + "</span></th>";
                         }
                     });
                     thead = "<tr>" + thead + "</tr>";
@@ -57,7 +57,7 @@ $(document).ready(function(){
                         var tr = "";
                         $.each(gt.columns, function (j, column) {
                         
-                            if (column.isScore) {
+                            if (column.isNumeric) {
                                 tr += "<td>" + Functions.scoreConverter(item[column.name]) + "</td>";
                             }
                             else if (column.hasOwnProperty("href")) {

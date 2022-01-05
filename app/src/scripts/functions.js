@@ -17,22 +17,6 @@ var Functions = {
         }
     },
 
-    getDbTypeId: function (dbType) {
-
-        if (dbType === 'SCOPe'){
-            return 1;
-        }
-        else if (dbType === 'CATH') {
-            return 2;
-        }
-        else if (dbType === 'ECOD') {
-            return 3;
-        }
-        else {
-            return 4;
-        }
-    },
-
     getQueryVariable: function (name)
     {
            var query = window.location.search.substring(1);
