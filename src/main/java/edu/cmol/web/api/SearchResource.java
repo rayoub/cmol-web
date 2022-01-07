@@ -88,14 +88,23 @@ public class SearchResource extends BaseResource {
 
     private void writeSearchRecordArray(JsonGenerator generator, List<QueryRow> rows) {
 
+        int n = 0;
+        String lastReportId = "";
+
         generator.writeStartArray();
         for (int i = 0; i < rows.size(); i++) {
 
             QueryRow row = rows.get(i);
 
             generator.writeStartObject();
-       
-            generator.write("n", row.getN());
+    
+            String reportId = row.getReportId();
+            if (!reportId.equals(lastReportId)) {
+                n++;
+            }
+            generator.write("n", n);
+            lastReportId = reportId;
+
             generator.write("testDate", row.getTestDate());
             generator.write("testCode", row.getTestCode().replace("NGS ", ""));
             generator.write("diagnosis", row.getDiagnosis());

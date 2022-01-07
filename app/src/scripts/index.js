@@ -42,8 +42,8 @@ $(document).ready(function(){
                     // build table head
                     var thead = "";
                     $.each(gt.columns, function (i, column) {
-                        if (column.hasOwnProperty("title")) {
-                            thead += "<th><span title='" + column.title + "'>" + column.header + "<i class='my-tooltip fas fa-question-circle fa-xs'></i></span></th>";
+                        if (column.nowrap) {
+                            thead += "<th nowrap><span>" + column.header + "</span></th>";
                         }
                         else {
                             thead += "<th><span>" + column.header + "</span></th>";
@@ -63,6 +63,9 @@ $(document).ready(function(){
                             else if (column.hasOwnProperty("href")) {
                                 var link = "<a href='" + column.href + item[column.hrefName] + "' target='_blank'>" + item[column.name] + "</a>";
                                 tr += "<td>" + link + "</td>";
+                            }
+                            else if (column.nowrap) {
+                                tr += "<td nowrap>" + item[column.name] + "</td>";
                             }
                             else {
                                 tr += "<td>" + item[column.name] + "</td>";
