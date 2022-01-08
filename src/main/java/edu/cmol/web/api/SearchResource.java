@@ -24,6 +24,8 @@ public class SearchResource extends BaseResource {
     @GET
     @Produces("application/json")
     public Response get(
+        @QueryParam("fromDate") String fromDate,
+        @QueryParam("toDate") String toDate,
         @QueryParam("genes") String genes, 
         @QueryParam("tcChange") String tcChange, 
         @QueryParam("pcChange") String pcChange) throws Exception {
@@ -31,9 +33,11 @@ public class SearchResource extends BaseResource {
         // get response json
         String json = "{}";
         try {
-
+    
             QueryCriteria criteria = new QueryCriteria();
 
+            criteria.setFromDate(fromDate);
+            criteria.setToDate(toDate);
             criteria.setGenes(genes);
             criteria.setTranscriptChange(tcChange);
             criteria.setProteinChange(pcChange);

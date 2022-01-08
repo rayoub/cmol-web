@@ -1,11 +1,8 @@
 
 $(document).ready(function(){
 
-    // *** form event handlers
-
-    // *** initialize form
-
     // *** export 
+
     $("#exportTable").click(function() { 
 
         Export.exportTableToCSV("data.csv");
@@ -115,12 +112,15 @@ $(document).ready(function(){
 
 var getParams = function () {
 
+    var fromDate = $.trim($("#fromDate").val());
+    var toDate = $.trim($("#toDate").val());
     var genes = $.trim($("#genes").val());
-    var changeType = $("input[type=radio][name=changeType]:checked").val();
     var tcChange = $.trim($("#tcChange").val());
     var pcChange = $.trim($("#pcChange").val());
 
     var params = {
+        fromDate: fromDate,
+        toDate: toDate,
         genes: genes,
         tcChange: tcChange,
         pcChange: pcChange
