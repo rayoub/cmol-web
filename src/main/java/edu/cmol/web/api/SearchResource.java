@@ -1,6 +1,7 @@
 package edu.cmol.web.api;
 
 import java.io.StringWriter;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.json.Json;
@@ -112,12 +113,12 @@ public class SearchResource extends BaseResource {
             generator.write("testDate", row.getTestDate());
             generator.write("testCode", row.getTestCode().replace("NGS ", ""));
             generator.write("diagnosis", row.getDiagnosis());
-            generator.write("interpretation", row.getInterpretation());
+            generator.write("interpretation", row.getInterpretation().replace("_", " "));
             generator.write("physician", row.getPhysician());
             generator.write("gene", row.getGene());
             generator.write("alleleFraction", row.getAlleleFraction());
             generator.write("transcript", row.getTranscript());
-            generator.write("transcriptChange", row.getTrasncriptChange());
+            generator.write("transcriptChange", splitter(row.getTrasncriptChange(),20));
             generator.write("protein", row.getProtein());
             generator.write("proteinChange", row.getProteinChange());
             generator.write("assessment", row.getAssessment());
@@ -125,5 +126,18 @@ public class SearchResource extends BaseResource {
             generator.writeEnd();
         }
         generator.writeEnd();
+    }
+
+    public static String splitter(String text, int lineLength) {
+
+        lineLength = Math.min(text.length(), lineLength);
+        char[] textChars = text.toCharArray();
+        int numberOfLines = (int)Math.ceil(text.length() / (double)lineLength);
+        String[] lines = new String[numberOfLines];
+        for (int i = 0; i < textChars.length; i++) {
+            int index = i / lineLength;
+            lines[index] = (lines[index] == null ? "" : lines[index]) + textChars[i];
+        }
+        return String.join("..." + System.lineSeparator(), lines);
     }
 }
