@@ -111,14 +111,14 @@ public class SearchResource extends BaseResource {
             lastReportId = reportId;
 
             generator.write("testDate", row.getTestDate());
-            generator.write("testCode", row.getTestCode().replace("NGS ", ""));
+            generator.write("testCode", formatTestCode(row.getTestCode()));
             generator.write("diagnosis", row.getDiagnosis());
             generator.write("interpretation", row.getInterpretation().replace("_", " "));
             generator.write("physician", row.getPhysician());
             generator.write("gene", row.getGene());
             generator.write("alleleFraction", row.getAlleleFraction());
             generator.write("transcript", row.getTranscript());
-            generator.write("transcriptChange", splitter(row.getTrasncriptChange(),20));
+            generator.write("transcriptChange", formatTranscriptChange(row.getTrasncriptChange(),20));
             generator.write("protein", row.getProtein());
             generator.write("proteinChange", row.getProteinChange());
             generator.write("assessment", row.getAssessment());
@@ -128,7 +128,12 @@ public class SearchResource extends BaseResource {
         generator.writeEnd();
     }
 
-    public static String splitter(String text, int lineLength) {
+    public static String formatTestCode(String text) {
+
+        return text.replace("NGS ", "").replace("Comprehensive", "Comp");
+    }
+
+    public static String formatTranscriptChange(String text, int lineLength) {
 
         lineLength = Math.min(text.length(), lineLength);
         char[] textChars = text.toCharArray();

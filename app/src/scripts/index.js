@@ -64,6 +64,9 @@ $(document).ready(function(){
                             else if (column.nowrap) {
                                 tr += "<td nowrap>" + item[column.name] + "</td>";
                             }
+                            else if (column.pre) {
+                                tr += "<td><pre style='font-family: monospace; font-size: 16px'>" + item[column.name] + "</pre></td>";
+                            }
                             else {
                                 tr += "<td>" + item[column.name] + "</td>";
                             }
