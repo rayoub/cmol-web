@@ -104,7 +104,7 @@ $(document).ready(function(){
         var dummy = document.createElement("textarea");
         document.body.appendChild(dummy);
         var params = getParams();
-        dummy.value = "genes=" + params.genes + "\ntcChange=" + params.tcChange + "\npcChange=" + params.pcChange;
+        dummy.value = "mrns=" + params.mrns + "\ngenes=" + params.genes + "\ntcChange=" + params.tcChange + "\npcChange=" + params.pcChange;
         alert(dummy.value);
         dummy.select();
         document.execCommand("copy");
@@ -117,6 +117,7 @@ var getParams = function () {
 
     var fromDate = $.trim($("#fromDate").val());
     var toDate = $.trim($("#toDate").val());
+    var mrns = $.trim($("#mrns").val());
     var genes = $.trim($("#genes").val());
     var tcChange = $.trim($("#tcChange").val());
     var pcChange = $.trim($("#pcChange").val());
@@ -124,6 +125,7 @@ var getParams = function () {
     var params = {
         fromDate: fromDate,
         toDate: toDate,
+        mrns: mrns,
         genes: genes,
         tcChange: tcChange,
         pcChange: pcChange

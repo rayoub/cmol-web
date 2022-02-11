@@ -1,7 +1,6 @@
 package edu.cmol.web.api;
 
 import java.io.StringWriter;
-import java.util.Arrays;
 import java.util.List;
 
 import javax.json.Json;
@@ -27,6 +26,7 @@ public class SearchResource extends BaseResource {
     public Response get(
         @QueryParam("fromDate") String fromDate,
         @QueryParam("toDate") String toDate,
+        @QueryParam("mrns") String mrns, 
         @QueryParam("genes") String genes, 
         @QueryParam("tcChange") String tcChange, 
         @QueryParam("pcChange") String pcChange) throws Exception {
@@ -39,6 +39,7 @@ public class SearchResource extends BaseResource {
 
             criteria.setFromDate(fromDate);
             criteria.setToDate(toDate);
+            criteria.setMrns(mrns);
             criteria.setGenes(genes);
             criteria.setTranscriptChange(tcChange);
             criteria.setProteinChange(pcChange);
@@ -110,6 +111,7 @@ public class SearchResource extends BaseResource {
             generator.write("n", n);
             lastReportId = reportId;
 
+            generator.write("mrn", row.getMrn());
             generator.write("testDate", row.getTestDate());
             generator.write("testCode", formatTestCode(row.getTestCode()));
             generator.write("diagnosis", row.getDiagnosis());
