@@ -23,7 +23,15 @@
                 However, the <strong>Lab Database</strong> is not as 'official' as the <strong>QCI Database</strong>.
             </div>
             <div class="card-body">
-                <form> 
+                <form>
+                    <div id="diagnosesDiv" class="row">
+                        <label class="form-label col-xs-12 col-sm-3 col-md-2">Diagnoses:</label>
+                        <div class="col-xs-12 col-sm-9 col-md-10">
+                            <select id="diagnoses" class="form-select" multiple>
+                            </select>
+                            <p class="form-text">ctrl-click to deselect items</p>
+                        </div>
+                    </div>
                     <div id="fromDateDiv" class="row">
                         <label class="form-label col-xs-12 col-sm-3 col-md-2">From Date:</label>
                         <div class="col-xs-12 col-sm-9 col-md-10">

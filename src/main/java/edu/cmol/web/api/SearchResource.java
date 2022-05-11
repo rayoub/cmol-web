@@ -19,7 +19,7 @@ import edu.kumc.qci.db.Reporter;
 @Path("search")
 public class SearchResource extends BaseResource {
 
-    private static int MAX_QUERY_ROWS = 2000;
+    private static int MAX_QUERY_ROWS = 4000;
 
     @GET
     @Produces("application/json")

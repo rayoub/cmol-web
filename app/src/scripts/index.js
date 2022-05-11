@@ -105,16 +105,32 @@ $(document).ready(function(){
         document.body.appendChild(dummy);
         var params = getParams();
         dummy.value = "mrns=" + params.mrns + "\ngenes=" + params.genes + "\ntcChange=" + params.tcChange + "\npcChange=" + params.pcChange;
-        alert(dummy.value);
         dummy.select();
         document.execCommand("copy");
         document.body.removeChild(dummy);
     }); // end click
 
+    // update the diagnosis selectbox
+    $.getJSON('api/lookup?lookupType=1')
+        .done(function (data) {
+            
+            $("#waitTable").hide();
+            $("#search").prop("disabled", false);
+
+            if (data.code === "0") {
+                if (data.records.length > 0) {
+                    $.each(data.records, function (i, item) {
+                        $('#diagnoses').append(new Option(item["descr"], item["id"]));
+                    });
+                }
+            } 
+        }); // end done
+
 }); // end jquery
 
 var getParams = function () {
 
+    var diagnoses = $.trim($("#diagnoses").val())
     var fromDate = $.trim($("#fromDate").val());
     var toDate = $.trim($("#toDate").val());
     var mrns = $.trim($("#mrns").val());
@@ -123,6 +139,7 @@ var getParams = function () {
     var pcChange = $.trim($("#pcChange").val());
 
     var params = {
+        diagnoses: diagnoses,
         fromDate: fromDate,
         toDate: toDate,
         mrns: mrns,
