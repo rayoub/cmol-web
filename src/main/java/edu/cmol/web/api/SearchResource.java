@@ -1,6 +1,7 @@
 package edu.cmol.web.api;
 
 import java.io.StringWriter;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.json.Json;
@@ -24,6 +25,7 @@ public class SearchResource extends BaseResource {
     @GET
     @Produces("application/json")
     public Response get(
+        @QueryParam("diagnoses") String diagnoses,
         @QueryParam("fromDate") String fromDate,
         @QueryParam("toDate") String toDate,
         @QueryParam("mrns") String mrns, 
@@ -36,6 +38,9 @@ public class SearchResource extends BaseResource {
         try {
     
             QueryCriteria criteria = new QueryCriteria();
+
+            int[] d = Arrays.stream(diagnoses.split(",")).mapToInt(Integer::parseInt).toArray();
+            criteria.setDiagnoses(d);
 
             criteria.setFromDate(fromDate);
             criteria.setToDate(toDate);
