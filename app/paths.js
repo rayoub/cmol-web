@@ -15,6 +15,6 @@ module.exports = {
     ],
 
     // absolute paths
-    war: 'D:/Code/cmol-web/src/main/webapp',
-    web: 'C:/Program Files/Apache Software Foundation/Tomcat 8.5/webapps/ROOT'
+    war: 'E:/git/cmol-web/src/main/webapp',
+    web: 'C:/Program Files/Apache Software Foundation/Tomcat 8.5/webapp'
 };
