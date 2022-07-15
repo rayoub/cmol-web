@@ -1,5 +1,6 @@
 package edu.cmol.web.api;
 
+import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.util.Arrays;
 import java.util.List;
@@ -12,6 +13,8 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.ResponseBuilder;
+
+import org.apache.commons.lang3.exception.ExceptionUtils;
 
 import edu.kumc.qci.db.QueryCriteria;
 import edu.kumc.qci.db.QueryRow;
@@ -39,8 +42,10 @@ public class SearchResource extends BaseResource {
     
             QueryCriteria criteria = new QueryCriteria();
 
-            int[] d = Arrays.stream(diagnoses.split(",")).mapToInt(Integer::parseInt).toArray();
-            criteria.setDiagnoses(d);
+            if (diagnoses.length() > 0) {
+                int[] d = Arrays.stream(diagnoses.split(",")).mapToInt(Integer::parseInt).toArray();
+                criteria.setDiagnoses(d);
+            }
 
             criteria.setFromDate(fromDate);
             criteria.setToDate(toDate);
@@ -81,11 +86,13 @@ public class SearchResource extends BaseResource {
             JsonGenerator generator = Json.createGenerator(writer);
             generator.writeStartObject();
             generator.write("code", -1);
+
+            String trace = ExceptionUtils.getStackTrace(e);
             if (e.getMessage() != null) {
-                generator.write("message", e.getMessage());
+                generator.write("message", trace);
             }
             else {
-                generator.write("message", e.toString());
+                generator.write("string", trace);
             }
             generator.writeEnd();
             generator.close();
