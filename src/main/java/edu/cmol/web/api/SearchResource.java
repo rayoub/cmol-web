@@ -1,6 +1,5 @@
 package edu.cmol.web.api;
 
-import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.util.Arrays;
 import java.util.List;
@@ -124,6 +123,7 @@ public class SearchResource extends BaseResource {
             lastReportId = reportId;
 
             generator.write("mrn", row.getMrn());
+            generator.write("accession", row.getAccession());
             generator.write("testDate", row.getTestDate());
             generator.write("testCode", formatTestCode(row.getTestCode()));
             generator.write("diagnosis", row.getDiagnosis());
@@ -132,7 +132,7 @@ public class SearchResource extends BaseResource {
             generator.write("gene", row.getGene());
             generator.write("alleleFraction", row.getAlleleFraction());
             generator.write("transcript", row.getTranscript());
-            generator.write("transcriptChange", formatTranscriptChange(row.getTrasncriptChange(),20));
+            generator.write("transcriptChange", formatTranscriptChange(row.getTrasncriptChange(), 20));
             generator.write("protein", row.getProtein());
             generator.write("proteinChange", row.getProteinChange());
             generator.write("assessment", row.getAssessment());
