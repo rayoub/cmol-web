@@ -19,11 +19,12 @@ var GridTypes = {
                 hrefName: "transcript", href: "https://www.ncbi.nlm.nih.gov/nuccore/"
             },
             { column: 11, name: 'transcriptChange', header: 'Change', pre: true }, 
-            { column: 12, name: 'protein', header: 'Protein',
+            { column: 12, name: 'transcriptExon', header: 'Exon' }, 
+            { column: 13, name: 'protein', header: 'Protein',
                 hrefName: "protein", href: "https://www.ncbi.nlm.nih.gov/protein/"
             },
-            { column: 13, name: 'proteinChange', header: 'Change' }, 
-            { column: 14, name: 'assessment', header: 'Assessment' }
+            { column: 14, name: 'proteinChange', header: 'Change' }, 
+            { column: 15, name: 'assessment', header: 'Assessment' }
         ],
         items: []
     },

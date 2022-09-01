@@ -132,7 +132,13 @@ public class SearchResource extends BaseResource {
             generator.write("gene", row.getGene());
             generator.write("alleleFraction", row.getAlleleFraction());
             generator.write("transcript", row.getTranscript());
-            generator.write("transcriptChange", formatTranscriptChange(row.getTrasncriptChange(), 20));
+            generator.write("transcriptChange", row.getTrasncriptChange());
+            if (row.getTranscriptExon() > -1) {
+                generator.write("transcriptExon", row.getTranscriptExon());
+            }
+            else {
+                generator.write("transcriptExon", "");
+            }
             generator.write("protein", row.getProtein());
             generator.write("proteinChange", row.getProteinChange());
             generator.write("assessment", row.getAssessment());
