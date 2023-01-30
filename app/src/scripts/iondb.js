@@ -24,7 +24,7 @@ $(document).ready(function(){
         
         var params = getParams();
 
-        return $.getJSON('api/qci?' + $.param(params))
+        return $.getJSON('api/ion?' + $.param(params))
         .done(function (data) {
             
             $("#waitTable").hide();
@@ -34,7 +34,7 @@ $(document).ready(function(){
                 if (data.records.length > 0) {
 
                     // get grid type
-                    var gt = GridTypes.qci;
+                    var gt = GridTypes.ion;
 
                     // build table head
                     var thead = "";
@@ -111,7 +111,7 @@ $(document).ready(function(){
     }); // end click
 
     // update the diagnosis selectbox
-    $.getJSON('api/lookup?lookupType=1')
+    $.getJSON('api/lookup?lookupType=2')
         .done(function (data) {
             
             $("#waitTable").hide();
@@ -120,7 +120,7 @@ $(document).ready(function(){
             if (data.code === "0") {
                 if (data.records.length > 0) {
                     $.each(data.records, function (i, item) {
-                        $('#diagnoses').append(new Option(item["descr"], item["id"]));
+                        $('#samples').append(new Option(item["descr"], item["id"]));
                     });
                 }
             } 
@@ -130,22 +130,10 @@ $(document).ready(function(){
 
 var getParams = function () {
 
-    var diagnoses = $.trim($("#diagnoses").val())
-    var fromDate = $.trim($("#fromDate").val());
-    var toDate = $.trim($("#toDate").val());
-    var mrns = $.trim($("#mrns").val());
-    var genes = $.trim($("#genes").val());
-    var tcChange = $.trim($("#tcChange").val());
-    var pcChange = $.trim($("#pcChange").val());
+    var sample = $.trim($("#samples").val())
 
     var params = {
-        diagnoses: diagnoses,
-        fromDate: fromDate,
-        toDate: toDate,
-        mrns: mrns,
-        genes: genes,
-        tcChange: tcChange,
-        pcChange: pcChange
+        sample: sample
     };
 
     return params;

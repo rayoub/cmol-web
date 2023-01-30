@@ -1,7 +1,7 @@
 
 var GridTypes = {
 
-    QCI: {
+    qci: {
         columns: [
             { column: 0, name: 'n', header: '#', nowrap: true },
             { column: 1, name: 'mrn', header: 'MRN', nowrap: true },
@@ -29,8 +29,18 @@ var GridTypes = {
         items: []
     },
 
-    getGridType: function() {
-
-        return this.QCI;
+    ion: {
+        columns: [
+            { column: 0, name: 'sample', header: 'sample' },
+            { column: 1, name: 'locus', header: 'locus' },
+            { column: 2, name: 'genotype', header: 'genotype' },
+            { column: 3, name: 'filter', header: 'filter' },
+            { column: 4, name: 'ref', header: 'ref' }, 
+            { column: 5, name: 'genes', header: 'genes' }, 
+            { column: 6, name: 'transcript', header: 'transcript' }, 
+            { column: 7, name: 'coding', header: 'coding' }, 
+            { column: 8, name: 'protein', header: 'protein' }, 
+        ],
+        items: []
     }
 }

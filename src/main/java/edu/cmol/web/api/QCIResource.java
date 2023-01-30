@@ -19,8 +19,8 @@ import edu.kumc.qci.db.QueryCriteria;
 import edu.kumc.qci.db.QueryRow;
 import edu.kumc.qci.db.Reporter;
 
-@Path("search")
-public class SearchResource extends BaseResource {
+@Path("qci")
+public class QCIResource extends BaseResource {
 
     private static int MAX_QUERY_ROWS = 4000;
 

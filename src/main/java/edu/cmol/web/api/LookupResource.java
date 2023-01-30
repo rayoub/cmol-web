@@ -12,9 +12,10 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.ResponseBuilder;
 
-import edu.kumc.qci.db.Lookup;
-import edu.kumc.qci.db.LookupType;
-import edu.kumc.qci.db.LookupVal;
+import org.apache.commons.lang3.tuple.Pair;
+
+import edu.kumc.ion.db.IonLookup;
+import edu.kumc.qci.db.QciLookup;
 
 @Path("lookup")
 public class LookupResource extends BaseResource {
@@ -27,7 +28,13 @@ public class LookupResource extends BaseResource {
         String json = "{}";
         try {
 
-            List<LookupVal> lookups = Lookup.getLookup(LookupType.DIAGNOSES);
+            List<Pair<String, String>> lookups = null;
+            if (lookupType == 1) {
+                lookups = QciLookup.getDiagnoses();
+            }
+            else {
+                lookups = IonLookup.getSamples();
+            }
 
             StringWriter writer = new StringWriter();
             JsonGenerator generator = Json.createGenerator(writer);
@@ -61,13 +68,13 @@ public class LookupResource extends BaseResource {
         return builder.build();
     }
 
-    private void writeLookupVals(JsonGenerator generator, List<LookupVal> vals) {
+    private void writeLookupVals(JsonGenerator generator, List<Pair<String, String>> vals) {
 
         generator.writeStartArray();
         for (int i = 0; i < vals.size(); i++) {
             generator.writeStartObject();
-            generator.write("id", vals.get(i).getId());
-            generator.write("descr", vals.get(i).getDescr());
+            generator.write("id", vals.get(i).getLeft());
+            generator.write("descr", vals.get(i).getRight());
             generator.writeEnd();
         }
         generator.writeEnd();
