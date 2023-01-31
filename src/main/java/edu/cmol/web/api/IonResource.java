@@ -14,9 +14,9 @@ import javax.ws.rs.core.Response.ResponseBuilder;
 
 import org.apache.commons.lang3.exception.ExceptionUtils;
 
-import edu.kumc.ion.db.QueryCriteria;
-import edu.kumc.ion.db.Reporter;
-import edu.kumc.ion.db.Variant;
+import edu.kumc.cmol.ion.QueryCriteria;
+import edu.kumc.cmol.ion.Reporter;
+import edu.kumc.cmol.ion.Variant;
 
 @Path("ion")
 public class IonResource extends BaseResource {

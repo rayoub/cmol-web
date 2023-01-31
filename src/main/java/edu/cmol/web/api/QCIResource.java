@@ -15,9 +15,9 @@ import javax.ws.rs.core.Response.ResponseBuilder;
 
 import org.apache.commons.lang3.exception.ExceptionUtils;
 
-import edu.kumc.qci.db.QueryCriteria;
-import edu.kumc.qci.db.QueryRow;
-import edu.kumc.qci.db.Reporter;
+import edu.kumc.cmol.qci.QueryCriteria;
+import edu.kumc.cmol.qci.QueryRow;
+import edu.kumc.cmol.qci.Reporter;
 
 @Path("qci")
 public class QCIResource extends BaseResource {

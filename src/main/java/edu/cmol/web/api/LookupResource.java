@@ -14,8 +14,8 @@ import javax.ws.rs.core.Response.ResponseBuilder;
 
 import org.apache.commons.lang3.tuple.Pair;
 
-import edu.kumc.ion.db.IonLookup;
-import edu.kumc.qci.db.QciLookup;
+import edu.kumc.cmol.ion.IonLookup;
+import edu.kumc.cmol.qci.QciLookup;
 
 @Path("lookup")
 public class LookupResource extends BaseResource {
