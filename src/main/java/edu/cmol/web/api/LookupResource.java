@@ -12,8 +12,8 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.ResponseBuilder;
 
-import org.apache.commons.lang3.tuple.Pair;
-
+import edu.kumc.cmol.core.LookupType;
+import edu.kumc.cmol.core.LookupVal;
 import edu.kumc.cmol.ion.IonLookup;
 import edu.kumc.cmol.qci.QciLookup;
 
@@ -28,12 +28,12 @@ public class LookupResource extends BaseResource {
         String json = "{}";
         try {
 
-            List<Pair<String, String>> lookups = null;
-            if (lookupType == 1) {
-                lookups = QciLookup.getDiagnoses();
+            List<LookupVal> vals = null;
+            if (lookupType == LookupType.DIAGNOSES.getId()) {
+                vals = QciLookup.getDiagnoses();
             }
             else {
-                lookups = IonLookup.getSamples();
+                vals = IonLookup.getSamples();
             }
 
             StringWriter writer = new StringWriter();
@@ -41,7 +41,7 @@ public class LookupResource extends BaseResource {
             generator.writeStartObject();
             generator.write("code", "0");
             generator.writeKey("records");
-            writeLookupVals(generator, lookups);
+            writeLookupVals(generator, vals);
             generator.writeEnd();
             generator.close();
             json = writer.toString();
@@ -68,13 +68,13 @@ public class LookupResource extends BaseResource {
         return builder.build();
     }
 
-    private void writeLookupVals(JsonGenerator generator, List<Pair<String, String>> vals) {
+    private void writeLookupVals(JsonGenerator generator, List<LookupVal> vals) {
 
         generator.writeStartArray();
         for (int i = 0; i < vals.size(); i++) {
             generator.writeStartObject();
-            generator.write("id", vals.get(i).getLeft());
-            generator.write("descr", vals.get(i).getRight());
+            generator.write("id", vals.get(i).getId());
+            generator.write("descr", vals.get(i).getDescr());
             generator.writeEnd();
         }
         generator.writeEnd();
