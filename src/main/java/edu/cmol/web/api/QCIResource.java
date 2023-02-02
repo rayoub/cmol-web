@@ -1,5 +1,8 @@
 package edu.cmol.web.api;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.io.StringWriter;
 import java.util.Arrays;
 import java.util.List;
@@ -12,12 +15,15 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.ResponseBuilder;
+import javax.ws.rs.core.StreamingOutput;
 
+import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.exception.ExceptionUtils;
 
+import edu.kumc.cmol.qci.Db;
 import edu.kumc.cmol.qci.QueryCriteria;
 import edu.kumc.cmol.qci.QueryRow;
-import edu.kumc.cmol.qci.Reporter;
+import edu.kumc.cmol.qci.WS;
 
 @Path("qci")
 public class QCIResource extends BaseResource {
@@ -53,7 +59,7 @@ public class QCIResource extends BaseResource {
             criteria.setTranscriptChange(tcChange);
             criteria.setProteinChange(pcChange);
 
-            List<QueryRow> rows = Reporter.getQueryRows(criteria);
+            List<QueryRow> rows = Db.getQueryRows(criteria);
 
             if (rows.size() > MAX_QUERY_ROWS) {
 
@@ -122,6 +128,7 @@ public class QCIResource extends BaseResource {
             generator.write("n", n);
             lastReportId = reportId;
 
+            generator.write("pdf", "pdf");
             generator.write("mrn", row.getMrn());
             generator.write("accession", row.getAccession());
             generator.write("testDate", row.getTestDate());
@@ -164,5 +171,26 @@ public class QCIResource extends BaseResource {
             lines[index] = (lines[index] == null ? "" : lines[index]) + textChars[i];
         }
         return String.join("..." + System.lineSeparator(), lines);
+    }
+    
+    @GET
+    @Path("pdf")
+    @Produces("application/pdf")
+    public Response getPdf(@QueryParam("accession") String accession) throws Exception {
+    
+        String token = WS.getToken();
+        InputStream inputPdf = WS.getPdf(token, accession); 
+        
+        StreamingOutput outputPdf = new StreamingOutput() {
+            @Override
+            public void write(OutputStream out) throws IOException {
+                IOUtils.copy(inputPdf, out);
+            }
+        };
+
+        ResponseBuilder builder = Response.ok((Object) outputPdf);
+        builder.header("Content-Disposition","filename=\"" + accession + ".pdf\"");  
+
+        return builder.build();
     }
 }
