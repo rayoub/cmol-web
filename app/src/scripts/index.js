@@ -98,17 +98,6 @@ $(document).ready(function(){
             } // end error
         }); // end done
     }); // end click
-    
-    // *** copy 
-    $("#copy").click(function() { 
-        var dummy = document.createElement("textarea");
-        document.body.appendChild(dummy);
-        var params = getParams();
-        dummy.value = "mrns=" + params.mrns + "\ngenes=" + params.genes + "\ntcChange=" + params.tcChange + "\npcChange=" + params.pcChange;
-        dummy.select();
-        document.execCommand("copy");
-        document.body.removeChild(dummy);
-    }); // end click
 
     // update the diagnosis selectbox
     $.getJSON('api/lookup?lookupType=1')

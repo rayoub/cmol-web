@@ -44,5 +44,21 @@ var GridTypes = {
             { column: 8, name: 'protein', header: 'protein' }, 
         ],
         items: []
-    }
+    },
+    
+    gc: {
+        columns: [
+            { column: 0, name: 'pdf', header: 'Report',
+                hrefName: "accession", href: "api/qci/pdf?accession="
+            },
+            { column: 1, name: 'mrn', header: 'MRN', nowrap: true },
+            { column: 2, name: 'accession', header: 'ACCN' },
+            { column: 3, name: 'testDate', header: 'Test Date', nowrap: true },
+            { column: 4, name: 'testCode', header: 'Panel' }, 
+            { column: 5, name: 'diagnosis', header: 'Diagnosis' }, 
+            { column: 6, name: 'interpretation', header: 'Interpretation' }, 
+            { column: 7, name: 'physician', header: 'Physician' }
+        ],
+        items: []
+    },
 }

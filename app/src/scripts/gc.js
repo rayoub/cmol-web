@@ -24,7 +24,7 @@ $(document).ready(function(){
         
         var params = getParams();
 
-        return $.getJSON('api/ion?' + $.param(params))
+        return $.getJSON('api/gc?' + $.param(params))
         .done(function (data) {
             
             $("#waitTable").hide();
@@ -34,7 +34,7 @@ $(document).ready(function(){
                 if (data.records.length > 0) {
 
                     // get grid type
-                    var gt = GridTypes.ion;
+                    var gt = GridTypes.gc;
 
                     // build table head
                     var thead = "";
@@ -99,30 +99,16 @@ $(document).ready(function(){
         }); // end done
     }); // end click
 
-    // update the diagnosis selectbox
-    $.getJSON('api/lookup?lookupType=2')
-        .done(function (data) {
-            
-            $("#waitTable").hide();
-            $("#search").prop("disabled", false);
-
-            if (data.code === "0") {
-                if (data.records.length > 0) {
-                    $.each(data.records, function (i, item) {
-                        $('#samples').append(new Option(item["descr"], item["id"]));
-                    });
-                }
-            } 
-        }); // end done
-
 }); // end jquery
 
 var getParams = function () {
 
-    var sample = $.trim($("#samples").val())
+    var fromDate = $.trim($("#fromDate").val());
+    var toDate = $.trim($("#toDate").val());
 
     var params = {
-        sample: sample
+        fromDate: fromDate,
+        toDate: toDate
     };
 
     return params;

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+    <title>cmol-web</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+</head>
+<body>
+    <header class="m-4">
+        <h3>Clinical Molecular Oncology Laboratory Website</h3>
+        <ul class="nav"> 
+            <a class="nav-link" href="/">QCI Data</a> 
+            <a class="nav-link" href="/iondb.html">Ion Data</a> 
+            <a class="nav-link disabled" href="/gc.html">GC Referrals</a> 
+        </ul>
+    </header>
+    <section id="criteria">
+        <div class="card m-4">
+            <div class="card-header">
+                <strong>Genetic Counsleing Referrals</strong> are ...
+            </div>
+            <div class="card-body">
+                <form>
+                    <div id="fromDateDiv" class="row">
+                        <label class="form-label col-xs-12 col-sm-3 col-md-2">From Date:</label>
+                        <div class="col-xs-12 col-sm-9 col-md-10">
+                            <input id="fromDate" type="date" class="form-control w-25" placeholder="mm-dd-yyyy">
+                            <p class="form-text"></p>
+                        </div>
+                    </div>
+                    <div id="toDateDiv" class="row">
+                        <label class="form-label col-xs-12 col-sm-3 col-md-2">To Date:</label>
+                        <div class="col-xs-12 col-sm-9 col-md-10">
+                            <input id="toDate" type="date" class="form-control w-25" placeholder="mm-dd-yyyy">
+                            <p class="form-text"></p>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="card-footer">
+                <button id="search" type="button" class="btn btn-primary">search</button>
+            </div>
+        </div>
+    </section>
+    <section id="grid">
+        <div class="card m-4">
+            <div id="tableHeader" class="card-header" style="display: none;">
+                <ul>
+                    <!--<li>All <strong>PII</strong> has been removed. </li>-->
+                    <li>Click the <strong>pdf</strong> link in the report column to produce a QCI report. There is one report per accession #.</li>
+                    <li>Export to a CSV file or horizontally scroll at the bottom of the table.</li>
+                </ul>
+            </div>
+            <div class="card-body">
+                <div id="waitTable" class="container-fluid" style="display:none;">
+                    <div class="row">
+                        <div class="col text-center">
+                            <p>Please wait while your results are obtained.</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col text-center">
+                            <div class="spinner-border"></div>
+                        </div>
+                    </div>
+                </div>
+                <div id="errorTable" class="container-fluid" style="display:none;">
+                    <div class="row">
+                        <div class="col text-center">
+                            <p>An error occurred</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col text-center">
+                            <p id="errorMessage" class="text-danger"></p>
+                        </div>
+                    </div>
+                </div>
+                <div id="emptyTable" class="container-fluid" style="display: none;">
+                    <div class="row">
+                        <div class="col text-center">
+                            <p>No Records</p>
+                        </div>
+                    </div>
+                </div>
+                <div id="dataTableDiv" class="table-responsive" style="display: none;">
+                    <table id="dataTable" class="table table-sm">
+                        <thead>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div id="exportTable" class="card-footer" style="display: none;">
+                <button type="button" class="btn btn-primary">export to csv</button>
+            </div>
+        </div>
+    </section>
+    <footer class="m-4 float-end">
+        <p>© 2023 kumc.edu</p>
+    </footer>
+    <script src="scripts/jquery-3.3.1.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="scripts/grid_types.js"></script>
+    <script src="scripts/numeral.min.js"></script>
+    <script src="scripts/functions.js"></script>
+    <script src="scripts/export.js"></script>
+    <script src="scripts/gc.js"></script>
+</body>
+</html>
+
+
+
