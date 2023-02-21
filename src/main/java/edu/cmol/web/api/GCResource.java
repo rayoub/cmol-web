@@ -78,11 +78,14 @@ public class GCResource extends BaseResource {
             generator.write("pdf", "pdf");
             generator.write("mrn", ref.getMrn());
             generator.write("accession", ref.getAccession());
+            generator.write("age", ref.getAge());
             generator.write("testDate", ref.getTestDate());
             generator.write("testCode", formatTestCode(ref.getTestCode()));
+            generator.write("tumorSite", ref.getTumorSite());
             generator.write("diagnosis", ref.getDiagnosis());
             generator.write("interpretation", ref.getInterpretation().replace("_", " "));
             generator.write("physician", ref.getPhysician());
+            generator.write("genes", ref.getGenes());
 
             generator.writeEnd();
         }
