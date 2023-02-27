@@ -86,6 +86,7 @@ public class GCResource extends BaseResource {
             generator.write("interpretation", ref.getInterpretation().replace("_", " "));
             generator.write("physician", ref.getPhysician());
             generator.write("genes", ref.getGenes());
+            generator.write("notified", ref.getNotified());
 
             generator.writeEnd();
         }

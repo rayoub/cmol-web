@@ -48,19 +48,25 @@ var GridTypes = {
     
     gc: {
         columns: [
-            { column: 0, name: 'pdf', header: 'Report',
-                hrefName: "accession", href: "api/qci/pdf?accession="
+            { column: 0, name: 'checkbox', header: 'Select', 
+                checkbox: true, checkId: 'accession'
             },
-            { column: 1, name: 'testDate', header: 'Test Date', nowrap: true },
-            { column: 2, name: 'testCode', header: 'Panel' }, 
-            { column: 3, name: 'physician', header: 'Physician' },
-            { column: 4, name: 'accession', header: 'ACCN' },
-            { column: 5, name: 'mrn', header: 'MRN', nowrap: true },
-            { column: 6, name: 'age', header: 'Age' },
-            { column: 7, name: 'tumorSite', header: 'Tumor Site' }, 
-            { column: 8, name: 'diagnosis', header: 'Diagnosis' }, 
-            { column: 9, name: 'interpretation', header: 'Interpretation' }, 
-            { column: 10, name: 'genes', header: 'Variant Genes' }
+            { column: 1, name: 'notified', header: 'Notified', 
+                check: true 
+            },
+            { column: 2, name: 'pdf', header: 'Report',
+                hrefName: 'accession', href: 'api/qci/pdf?accession='
+            },
+            { column: 3, name: 'testDate', header: 'Test Date', nowrap: true },
+            { column: 4, name: 'testCode', header: 'Panel' }, 
+            { column: 5, name: 'physician', header: 'Physician' },
+            { column: 6, name: 'accession', header: 'ACCN' },
+            { column: 7, name: 'mrn', header: 'MRN', nowrap: true },
+            { column: 8, name: 'age', header: 'Age' },
+            { column: 9, name: 'tumorSite', header: 'Tumor Site' }, 
+            { column: 10, name: 'diagnosis', header: 'Diagnosis' }, 
+            { column: 11, name: 'interpretation', header: 'Interpretation' }, 
+            { column: 12, name: 'genes', header: 'Variant Genes' }
         ],
         items: []
     },

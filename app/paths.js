@@ -6,12 +6,7 @@ module.exports = {
         'src/**/*.html',
         'src/**/*.js',
         'src/**/*.css',
-        'src/**/*.eot',
-        'src/**/*.ttf',
-        'src/**/*.woff',
-        'src/**/*.woff2',
-        'src/**/*.xml', 
-        'src/**/*.png', 
+        'src/**/*.svg'
     ],
 
     // absolute paths

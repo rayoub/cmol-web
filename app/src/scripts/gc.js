@@ -3,11 +3,18 @@ $(document).ready(function(){
 
     // *** export 
 
-    $("#exportTable").click(function() { 
+    $("#downloadZipButton").click(function() { 
 
-        Export.exportTableToCSV("data.csv");
+        alert("Hello World");
 
     }); // end click
+    
+    $("#markNotifiedButton").click(function() { 
+
+        alert("Hello World");
+
+    }); // end click
+
 
     // *** search
 
@@ -17,7 +24,7 @@ $(document).ready(function(){
         $("#emptyTable").hide();
         $("tableHeader").hide();
         $("#dataTableDiv").hide(); 
-        $("#exportTable").hide();
+        $("#buttonTable").hide();
 
         $("#waitTable").show();
         $("#search").prop("disabled", true);
@@ -54,18 +61,23 @@ $(document).ready(function(){
                         var tr = "";
                         $.each(gt.columns, function (j, column) {
                         
-                            if (column.isNumeric) {
-                                tr += "<td>" + Functions.scoreConverter(item[column.name]) + "</td>";
-                            }
-                            else if (column.hasOwnProperty("href")) {
+                            if (column.hasOwnProperty("href")) {
                                 var link = "<a href='" + column.href + item[column.hrefName] + "' target='_blank'>" + item[column.name] + "</a>";
                                 tr += "<td>" + link + "</td>";
                             }
+                            else if (column.check) {
+                                if (item[column.name] == '1') {
+                                    tr += "<td><img src='scripts/check.svg'></td>";
+                                }
+                                else {
+                                    tr += "<td>&nbsp;</td>";
+                                }
+                            }
+                            else if (column.checkbox) {
+                                tr += "<td><input class='form-check-input' type='checkbox' id='" + item[column.checkId] + "'/></td>";
+                            }
                             else if (column.nowrap) {
                                 tr += "<td nowrap>" + item[column.name] + "</td>";
-                            }
-                            else if (column.pre) {
-                                tr += "<td><pre style='font-family: monospace; font-size: 16px'>" + item[column.name] + "</pre></td>";
                             }
                             else {
                                 tr += "<td>" + item[column.name] + "</td>";
@@ -80,7 +92,7 @@ $(document).ready(function(){
                     $("#dataTable tbody").html(tbody);
                     $("#tableHeader").show();
                     $("#dataTableDiv").show();
-                    $("#exportTable").show();
+                    $("#buttonTable").show();
                 }
                 else {
 

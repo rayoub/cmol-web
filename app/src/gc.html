@@ -47,7 +47,7 @@
         <div class="card m-4">
             <div id="tableHeader" class="card-header" style="display: none;">
                 <ul>
-                    <!--<li>All <strong>PII</strong> has been removed. </li>-->
+                    <li><b>UNDER CONSTRUCTION!</b></li>
                     <li>Click the <strong>pdf</strong> link in the report column to produce a QCI report.</li>
                     <li>Export to a CSV file or horizontally scroll at the bottom of the table.</li>
                 </ul>
@@ -93,8 +93,9 @@
                     </table>
                 </div>
             </div>
-            <div id="exportTable" class="card-footer" style="display: none;">
-                <button type="button" class="btn btn-primary">export to csv</button>
+            <div id="buttonTable" class="card-footer" style="display: none;">
+                <button type="button" class="btn btn-primary" id="downloadZipButton">download zip</button>
+                <button type="button" class="btn btn-primary" id="markNotifiedButton">mark notified</button>
             </div>
         </div>
     </section>
@@ -106,7 +107,6 @@
     <script src="scripts/grid_types.js"></script>
     <script src="scripts/numeral.min.js"></script>
     <script src="scripts/functions.js"></script>
-    <script src="scripts/export.js"></script>
     <script src="scripts/gc.js"></script>
 </body>
 </html>
