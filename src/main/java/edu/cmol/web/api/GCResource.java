@@ -1,6 +1,7 @@
 package edu.cmol.web.api;
 
 import java.io.StringWriter;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.json.Json;
@@ -96,5 +97,95 @@ public class GCResource extends BaseResource {
     public static String formatTestCode(String text) {
 
         return text.replace("NGS ", "").replace("Comprehensive", "Comp");
+    }
+    
+    @GET
+    @Path("set")
+    @Produces("application/json")
+    public Response set(@QueryParam("accessions") String accessions) throws Exception {
+    
+        // get response json
+        String json = "{}";
+        try {
+   
+            String[] a = accessions.split(",");
+            List<String> l = Arrays.asList(a); 
+            Db.insertNotified(l);
+
+            StringWriter writer = new StringWriter();
+            JsonGenerator generator = Json.createGenerator(writer);
+            generator.writeStartObject();
+            generator.write("code", "0");
+            generator.writeEnd();
+            generator.close();
+            json = writer.toString();
+        }
+        catch (Exception e) {
+
+            StringWriter writer = new StringWriter();
+            JsonGenerator generator = Json.createGenerator(writer);
+            generator.writeStartObject();
+            generator.write("code", -1);
+
+            String trace = ExceptionUtils.getStackTrace(e);
+            if (e.getMessage() != null) {
+                generator.write("message", trace);
+            }
+            else {
+                generator.write("string", trace);
+            }
+            generator.writeEnd();
+            generator.close();
+            json = writer.toString();
+        }
+
+        // response
+        ResponseBuilder builder = Response.ok(json);
+        return builder.build();
+    }
+    
+    @GET
+    @Path("unset")
+    @Produces("application/json")
+    public Response unset(@QueryParam("accessions") String accessions) throws Exception {
+    
+        // get response json
+        String json = "{}";
+        try {
+   
+            String[] a = accessions.split(",");
+            List<String> l = Arrays.asList(a); 
+            Db.removeNotified(l);
+
+            StringWriter writer = new StringWriter();
+            JsonGenerator generator = Json.createGenerator(writer);
+            generator.writeStartObject();
+            generator.write("code", "0");
+            generator.writeEnd();
+            generator.close();
+            json = writer.toString();
+        }
+        catch (Exception e) {
+
+            StringWriter writer = new StringWriter();
+            JsonGenerator generator = Json.createGenerator(writer);
+            generator.writeStartObject();
+            generator.write("code", -1);
+
+            String trace = ExceptionUtils.getStackTrace(e);
+            if (e.getMessage() != null) {
+                generator.write("message", trace);
+            }
+            else {
+                generator.write("string", trace);
+            }
+            generator.writeEnd();
+            generator.close();
+            json = writer.toString();
+        }
+
+        // response
+        ResponseBuilder builder = Response.ok(json);
+        return builder.build();
     }
 }
