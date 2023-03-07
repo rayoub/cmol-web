@@ -25,13 +25,16 @@ public class GCResource extends BaseResource {
     @Produces("application/json")
     public Response get(
         @QueryParam("fromDate") String fromDate,
-        @QueryParam("toDate") String toDate) throws Exception {
+        @QueryParam("toDate") String toDate,
+        @QueryParam("notifiedOrNot") int notifiedOrNot,
+        @QueryParam("notified") int notified,
+        @QueryParam("notNotified") int notNotified) throws Exception {
     
         // get response json
         String json = "{}";
         try {
     
-            List<GCReferral> rows = Db.getGCReferrals(fromDate, toDate);
+            List<GCReferral> rows = Db.getGCReferrals(fromDate, toDate, notifiedOrNot, notified, notNotified);
 
             StringWriter writer = new StringWriter();
             JsonGenerator generator = Json.createGenerator(writer);

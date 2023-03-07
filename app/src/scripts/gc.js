@@ -3,6 +3,15 @@ $(document).ready(function(){
 
     // *** notifications
     
+    $("#notifiedOrNotCheckBox").change(function() { 
+
+        // toggle disabled states
+        $('#notifiedRadio').prop("disabled", (i, v) => !v);
+        $('#notNotifiedRadio').prop("disabled", (i, v) => !v);
+
+
+    }); // check
+    
     $("#setAsNotifiedButton").click(function() { 
 
         // get checked 
@@ -36,7 +45,7 @@ $(document).ready(function(){
             }
         );
     }); // end click
-
+    
     // *** search
 
     $("#search").click(function () {
@@ -60,10 +69,16 @@ var getParams = function () {
 
     var fromDate = $.trim($("#fromDate").val());
     var toDate = $.trim($("#toDate").val());
+    var notifiedOrNot = $("#notifiedOrNotCheckBox").prop("checked") + 0;
+    var notified = $("#notifiedRadio").prop("checked") + 0;
+    var notNotified = $("#notNotifiedRadio").prop("checked") + 0;
 
     var params = {
         fromDate: fromDate,
-        toDate: toDate
+        toDate: toDate,
+        notifiedOrNot : notifiedOrNot,
+        notified : notified,
+        notNotified :notNotified 
     };
 
     return params;
