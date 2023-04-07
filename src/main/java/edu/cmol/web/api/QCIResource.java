@@ -20,7 +20,7 @@ import javax.ws.rs.core.StreamingOutput;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.exception.ExceptionUtils;
 
-import edu.kumc.cmol.qci.Db;
+import edu.kumc.cmol.qci.QciDb;
 import edu.kumc.cmol.qci.QueryCriteria;
 import edu.kumc.cmol.qci.QueryRow;
 import edu.kumc.cmol.qci.WS;
@@ -59,7 +59,7 @@ public class QCIResource extends BaseResource {
             criteria.setTranscriptChange(tcChange);
             criteria.setProteinChange(pcChange);
 
-            List<QueryRow> rows = Db.getQueryRows(criteria);
+            List<QueryRow> rows = QciDb.getQueryRows(criteria);
 
             if (rows.size() > MAX_QUERY_ROWS) {
 
@@ -112,7 +112,7 @@ public class QCIResource extends BaseResource {
     private void writeSearchRecordArray(JsonGenerator generator, List<QueryRow> rows) {
 
         int n = 0;
-        String lastReportId = "";
+        String lastSampleId = "";
 
         generator.writeStartArray();
         for (int i = 0; i < rows.size(); i++) {
@@ -121,12 +121,12 @@ public class QCIResource extends BaseResource {
 
             generator.writeStartObject();
     
-            String reportId = row.getReportId();
-            if (!reportId.equals(lastReportId)) {
+            String sampleId = row.getSampleId();
+            if (!sampleId.equals(lastSampleId)) {
                 n++;
             }
             generator.write("n", n);
-            lastReportId = reportId;
+            lastSampleId = sampleId;
 
             generator.write("pdf", "pdf");
             generator.write("mrn", row.getMrn());

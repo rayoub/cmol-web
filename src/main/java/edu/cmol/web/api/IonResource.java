@@ -14,9 +14,9 @@ import javax.ws.rs.core.Response.ResponseBuilder;
 
 import org.apache.commons.lang3.exception.ExceptionUtils;
 
+import edu.kumc.cmol.ion.IonDb;
 import edu.kumc.cmol.ion.QueryCriteria;
-import edu.kumc.cmol.ion.Reporter;
-import edu.kumc.cmol.ion.Variant;
+import edu.kumc.cmol.ion.QueryRow;
 
 @Path("ion")
 public class IonResource extends BaseResource {
@@ -26,7 +26,8 @@ public class IonResource extends BaseResource {
     @GET
     @Produces("application/json")
     public Response get(
-        @QueryParam("sample") String sample
+        @QueryParam("cmol_id") String cmolId,
+        @QueryParam("gene") String gene
     ) throws Exception {
     
         // get response json
@@ -34,9 +35,10 @@ public class IonResource extends BaseResource {
         try {
    
             QueryCriteria criteria = new QueryCriteria();
-            criteria.setSample(sample);            
+            criteria.setCmolId(cmolId);            
+            criteria.setGene(gene);            
 
-            List<Variant> rows = Reporter.getVariants(criteria);
+            List<QueryRow> rows = IonDb.getQueryRows(criteria);
 
             if (rows.size() > MAX_QUERY_ROWS) {
 
@@ -86,17 +88,21 @@ public class IonResource extends BaseResource {
         return builder.build();
     }
 
-    private void writeSearchRecordArray(JsonGenerator generator, List<Variant> rows) {
+    private void writeSearchRecordArray(JsonGenerator generator, List<QueryRow> rows) {
 
         generator.writeStartArray();
         for (int i = 0; i < rows.size(); i++) {
 
-            Variant row = rows.get(i);
+            QueryRow row = rows.get(i);
 
             generator.writeStartObject();
     
-            generator.write("sample", row.getSample());
+            generator.write("assay_folder", row.getAssayFolder());
+            generator.write("cmol_id", row.getCmolId());
+            generator.write("accession_id", row.getAccessionId());
             generator.write("locus", row.getLocus());
+            generator.write("type", row.getType());
+            generator.write("subtype", row.getSubtype());
             generator.write("genotype", row.getGenotype());
             generator.write("filter", row.getFilter());
             generator.write("ref", row.getRef());
