@@ -26,6 +26,7 @@ public class IonResource extends BaseResource {
     @GET
     @Produces("application/json")
     public Response get(
+        @QueryParam("assay_folder") String assayFolder,
         @QueryParam("cmol_id") String cmolId,
         @QueryParam("gene") String gene
     ) throws Exception {
@@ -35,6 +36,7 @@ public class IonResource extends BaseResource {
         try {
    
             QueryCriteria criteria = new QueryCriteria();
+            criteria.setAssayFolder(assayFolder);
             criteria.setCmolId(cmolId);            
             criteria.setGene(gene);            
 

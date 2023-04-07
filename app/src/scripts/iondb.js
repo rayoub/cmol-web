@@ -99,7 +99,7 @@ $(document).ready(function(){
         }); // end done
     }); // end click
 
-    // update the diagnosis selectbox
+    // update the assay folders selectbox
     $.getJSON('api/lookup?lookupType=2')
         .done(function (data) {
             
@@ -109,7 +109,23 @@ $(document).ready(function(){
             if (data.code === "0") {
                 if (data.records.length > 0) {
                     $.each(data.records, function (i, item) {
-                        $('#samples').append(new Option(item["descr"], item["id"]));
+                        $('#assayFolders').append(new Option(item["descr"], item["id"]));
+                    });
+                }
+            } 
+        }); // end done
+    
+    // init the cmol ids selectbox
+    $.getJSON('api/lookup?lookupType=3')
+        .done(function (data) {
+            
+            $("#waitTable").hide();
+            $("#search").prop("disabled", false);
+
+            if (data.code === "0") {
+                if (data.records.length > 0) {
+                    $.each(data.records, function (i, item) {
+                        $('#cmolIds').append(new Option(item["descr"], item["id"]));
                     });
                 }
             } 
@@ -119,10 +135,14 @@ $(document).ready(function(){
 
 var getParams = function () {
 
-    var sample = $.trim($("#samples").val())
+    var assay_folder = ""//$.trim($("#assayFolders").val())
+    var cmol_id = ""// $.trim($("#cmolIds").val())
+    var gene = $.trim($("#gene").val())
 
     var params = {
-        sample: sample
+        assay_folder: assay_folder,
+        cmol_id: cmol_id,
+        gene: gene
     };
 
     return params;

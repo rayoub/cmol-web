@@ -33,15 +33,19 @@ var GridTypes = {
 
     ion: {
         columns: [
-            { column: 0, name: 'sample', header: 'sample' },
-            { column: 1, name: 'locus', header: 'locus' },
-            { column: 2, name: 'genotype', header: 'genotype' },
-            { column: 3, name: 'filter', header: 'filter' },
-            { column: 4, name: 'ref', header: 'ref' }, 
-            { column: 5, name: 'genes', header: 'genes' }, 
-            { column: 6, name: 'transcript', header: 'transcript' }, 
-            { column: 7, name: 'coding', header: 'coding' }, 
-            { column: 8, name: 'protein', header: 'protein' }, 
+            { column: 0, name: 'assay_folder', header: 'assay_folder' },
+            { column: 1, name: 'cmol_id', header: 'cmol_id' },
+            { column: 2, name: 'accession_id', header: 'accession_id' },
+            { column: 3, name: 'locus', header: 'locus' },
+            { column: 4, name: 'type', header: 'type' },
+            { column: 5, name: 'subtype', header: 'subtype' },
+            { column: 6, name: 'genotype', header: 'genotype' },
+            { column: 7, name: 'filter', header: 'filter' },
+            { column: 8, name: 'ref', header: 'ref' }, 
+            { column: 9, name: 'genes', header: 'genes' }, 
+            { column: 10, name: 'transcript', header: 'transcript' }, 
+            { column: 11, name: 'coding', header: 'coding' }, 
+            { column: 12, name: 'protein', header: 'protein' }, 
         ],
         items: []
     },
