@@ -28,7 +28,7 @@ public class IonResource extends BaseResource {
     public Response get(
         @QueryParam("assay_folder") String assayFolder,
         @QueryParam("cmol_id") String cmolId,
-        @QueryParam("gene") String gene
+        @QueryParam("genes") String genes
     ) throws Exception {
     
         // get response json
@@ -38,7 +38,7 @@ public class IonResource extends BaseResource {
             QueryCriteria criteria = new QueryCriteria();
             criteria.setAssayFolder(assayFolder);
             criteria.setCmolId(cmolId);            
-            criteria.setGene(gene);            
+            criteria.setGenes(genes);            
 
             List<QueryRow> rows = IonDb.getQueryRows(criteria);
 

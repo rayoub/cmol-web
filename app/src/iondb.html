@@ -25,21 +25,23 @@
                     <div id="assayFolderDiv" class="row">
                         <label class="form-label col-xs-12 col-sm-3 col-md-2">Assay Folder:</label>
                         <div class="col-xs-12 col-sm-9 col-md-10">
-                            <select id="assayFolders" class="form-select">
+                            <select id="assayFolder" class="form-select">
                             </select>
+                            <p class="form-text"></p>
                         </div>
                     </div>
                     <div id="cmolIdDiv" class="row">
                         <label class="form-label col-xs-12 col-sm-3 col-md-2">Cmol Id:</label>
                         <div class="col-xs-12 col-sm-9 col-md-10">
-                            <select id="cmolIds" class="form-select">
-                            </select>
+                            <input id="cmolId" type="text" class="form-control" maxlength="64">
+                            <p class="form-text"></p>
                         </div>
                     </div>
                     <div id="geneDiv" class="row">
-                        <label class="form-label col-xs-12 col-sm-3 col-md-2">Gene:</label>
+                        <label class="form-label col-xs-12 col-sm-3 col-md-2">Genes:</label>
                         <div class="col-xs-12 col-sm-9 col-md-10">
-                            <input id="gene" type="text" class="form-control" maxlength="64">
+                            <input id="genes" type="text" class="form-control" maxlength="64">
+                            <p class="form-text">a semi-colon separated list of gene names</p>
                         </div>
                     </div>
                 </form>

@@ -32,12 +32,8 @@ public class LookupResource extends BaseResource {
             if (lookupType == LookupType.DIAGNOSES.getId()) {
                 vals = QciLookup.getDiagnoses();
             }
-            else if (lookupType == LookupType.ASSAYIDS.getId()) {
+            else { // if (lookupType == LookupType.ASSAYIDS.getId()) {
                 vals = IonLookup.getAssayIds();
-                vals.add(0, new LookupVal("", ""));
-            }
-            else {
-                vals = IonLookup.getCmolIds();
                 vals.add(0, new LookupVal("", ""));
             }
 

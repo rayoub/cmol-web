@@ -99,7 +99,7 @@ $(document).ready(function(){
         }); // end done
     }); // end click
 
-    // update the assay folders selectbox
+    // init the assay folders selectbox
     $.getJSON('api/lookup?lookupType=2')
         .done(function (data) {
             
@@ -109,23 +109,7 @@ $(document).ready(function(){
             if (data.code === "0") {
                 if (data.records.length > 0) {
                     $.each(data.records, function (i, item) {
-                        $('#assayFolders').append(new Option(item["descr"], item["id"]));
-                    });
-                }
-            } 
-        }); // end done
-    
-    // init the cmol ids selectbox
-    $.getJSON('api/lookup?lookupType=3')
-        .done(function (data) {
-            
-            $("#waitTable").hide();
-            $("#search").prop("disabled", false);
-
-            if (data.code === "0") {
-                if (data.records.length > 0) {
-                    $.each(data.records, function (i, item) {
-                        $('#cmolIds').append(new Option(item["descr"], item["id"]));
+                        $('#assayFolder').append(new Option(item["descr"], item["id"]));
                     });
                 }
             } 
@@ -135,14 +119,14 @@ $(document).ready(function(){
 
 var getParams = function () {
 
-    var assay_folder = ""//$.trim($("#assayFolders").val())
-    var cmol_id = ""// $.trim($("#cmolIds").val())
-    var gene = $.trim($("#gene").val())
+    var assay_folder = $.trim($("#assayFolder").val())
+    var cmol_id = $.trim($("#cmolId").val())
+    var genes = $.trim($("#genes").val())
 
     var params = {
         assay_folder: assay_folder,
         cmol_id: cmol_id,
-        gene: gene
+        genes: genes
     };
 
     return params;
