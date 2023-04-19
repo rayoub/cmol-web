@@ -33,19 +33,21 @@ var GridTypes = {
 
     ion: {
         columns: [
-            { column: 0, name: 'assay_folder', header: 'assay_folder' },
-            { column: 1, name: 'cmol_id', header: 'cmol_id' },
-            { column: 2, name: 'accession_id', header: 'accession_id' },
-            { column: 3, name: 'locus', header: 'locus' },
-            { column: 4, name: 'type', header: 'type' },
-            { column: 5, name: 'subtype', header: 'subtype' },
-            { column: 6, name: 'genotype', header: 'genotype' },
-            { column: 7, name: 'filter', header: 'filter' },
-            { column: 8, name: 'ref', header: 'ref' }, 
-            { column: 9, name: 'genes', header: 'genes' }, 
-            { column: 10, name: 'transcript', header: 'transcript' }, 
-            { column: 11, name: 'coding', header: 'coding' }, 
-            { column: 12, name: 'protein', header: 'protein' }, 
+            { column: 0, name: 'assay_folder', header: 'Assay' },
+            { column: 1, name: 'cmol_id', header: 'CMOL ID' },
+            { column: 2, name: 'accession_id', header: 'ACCN' },
+            { column: 3, name: 'locus', header: 'Locus' },
+            { column: 4, name: 'type', header: 'Type' },
+            { column: 5, name: 'genes', header: 'Genes',
+                hrefName: "genes", href: "https://www.genecards.org/cgi-bin/carddisp.pl?gene=" },
+            { column: 6, name: 'filter', header: 'Filter' },
+            { column: 7, name: 'genotype', header: 'Genotype' },
+            { column: 8, name: 'ref', header: 'Ref' }, 
+            { column: 9, name: 'transcript', header: 'Transcript',
+                hrefName: "transcript", href: "https://www.ncbi.nlm.nih.gov/nuccore/" 
+            },
+            { column: 10, name: 'coding', header: 'Transcript Change' }, 
+            { column: 11, name: 'protein', header: 'Protein Change' }
         ],
         items: []
     },
