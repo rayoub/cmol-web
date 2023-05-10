@@ -36,18 +36,19 @@ var GridTypes = {
             { column: 0, name: 'assay_folder', header: 'Assay' },
             { column: 1, name: 'cmol_id', header: 'CMOL ID' },
             { column: 2, name: 'accession_id', header: 'ACCN' },
-            { column: 3, name: 'locus', header: 'Locus' },
-            { column: 4, name: 'type', header: 'Type' },
-            { column: 5, name: 'genes', header: 'Genes',
+            { column: 3, name: 'mrn', header: 'MRN' },
+            { column: 4, name: 'locus', header: 'Locus' },
+            { column: 5, name: 'type', header: 'Type' },
+            { column: 6, name: 'genes', header: 'Genes',
                 hrefName: "genes", href: "https://www.genecards.org/cgi-bin/carddisp.pl?gene=" },
-            { column: 6, name: 'filter', header: 'Filter' },
-            { column: 7, name: 'genotype', header: 'Genotype' },
-            { column: 8, name: 'ref', header: 'Ref' }, 
-            { column: 9, name: 'transcript', header: 'Transcript',
+            { column: 7, name: 'filter', header: 'Filter' },
+            { column: 8, name: 'genotype', header: 'Genotype' },
+            { column: 9, name: 'ref', header: 'Ref' }, 
+            { column: 10, name: 'transcript', header: 'Transcript',
                 hrefName: "transcript", href: "https://www.ncbi.nlm.nih.gov/nuccore/" 
             },
-            { column: 10, name: 'coding', header: 'Transcript Change' }, 
-            { column: 11, name: 'protein', header: 'Protein Change' }
+            { column: 11, name: 'coding', header: 'Transcript Change' }, 
+            { column: 12, name: 'protein', header: 'Protein Change' }
         ],
         items: []
     },

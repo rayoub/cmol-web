@@ -26,8 +26,8 @@ public class IonResource extends BaseResource {
     @GET
     @Produces("application/json")
     public Response get(
-        @QueryParam("assay_folder") String assayFolder,
         @QueryParam("cmol_id") String cmolId,
+        @QueryParam("mrns") String mrns, 
         @QueryParam("genes") String genes
     ) throws Exception {
     
@@ -36,8 +36,8 @@ public class IonResource extends BaseResource {
         try {
    
             QueryCriteria criteria = new QueryCriteria();
-            criteria.setAssayFolder(assayFolder);
             criteria.setCmolId(cmolId);            
+            criteria.setMrns(mrns);
             criteria.setGenes(genes);            
 
             List<QueryRow> rows = IonDb.getQueryRows(criteria);
@@ -101,6 +101,7 @@ public class IonResource extends BaseResource {
     
             generator.write("assay_folder", row.getAssayFolder());
             generator.write("cmol_id", row.getCmolId());
+            generator.write("mrn", row.getMrn());
             generator.write("accession_id", row.getAccessionId());
             generator.write("locus", row.getLocus());
             generator.write("type", row.getType());

@@ -99,33 +99,17 @@ $(document).ready(function(){
         }); // end done
     }); // end click
 
-    // init the assay folders selectbox
-    $.getJSON('api/lookup?lookupType=2')
-        .done(function (data) {
-            
-            $("#waitTable").hide();
-            $("#search").prop("disabled", false);
-
-            if (data.code === "0") {
-                if (data.records.length > 0) {
-                    $.each(data.records, function (i, item) {
-                        $('#assayFolder').append(new Option(item["descr"], item["id"]));
-                    });
-                }
-            } 
-        }); // end done
-
 }); // end jquery
 
 var getParams = function () {
 
-    var assay_folder = $.trim($("#assayFolder").val())
     var cmol_id = $.trim($("#cmolId").val())
+    var mrns = $.trim($("#mrns").val());
     var genes = $.trim($("#genes").val())
 
     var params = {
-        assay_folder: assay_folder,
         cmol_id: cmol_id,
+        mrns: mrns,
         genes: genes
     };
 
