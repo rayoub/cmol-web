@@ -26,9 +26,13 @@ public class IonResource extends BaseResource {
     @GET
     @Produces("application/json")
     public Response get(
+        @QueryParam("fromDate") String fromDate,
+        @QueryParam("toDate") String toDate,
         @QueryParam("cmol_id") String cmolId,
         @QueryParam("mrns") String mrns, 
-        @QueryParam("genes") String genes
+        @QueryParam("genes") String genes,
+        @QueryParam("tcChange") String tcChange, 
+        @QueryParam("pcChange") String pcChange
     ) throws Exception {
     
         // get response json
@@ -36,9 +40,13 @@ public class IonResource extends BaseResource {
         try {
    
             QueryCriteria criteria = new QueryCriteria();
+            criteria.setFromDate(fromDate);
+            criteria.setToDate(toDate);
             criteria.setCmolId(cmolId);            
             criteria.setMrns(mrns);
             criteria.setGenes(genes);            
+            criteria.setTranscriptChange(tcChange);
+            criteria.setProteinChange(pcChange);
 
             List<QueryRow> rows = IonDb.getQueryRows(criteria);
 

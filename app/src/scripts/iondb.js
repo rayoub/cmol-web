@@ -103,14 +103,22 @@ $(document).ready(function(){
 
 var getParams = function () {
 
+    var fromDate = $.trim($("#fromDate").val());
+    var toDate = $.trim($("#toDate").val());
     var cmol_id = $.trim($("#cmolId").val())
     var mrns = $.trim($("#mrns").val());
     var genes = $.trim($("#genes").val())
+    var tcChange = $.trim($("#tcChange").val());
+    var pcChange = $.trim($("#pcChange").val());
 
     var params = {
+        fromDate: fromDate,
+        toDate: toDate,
         cmol_id: cmol_id,
         mrns: mrns,
-        genes: genes
+        genes: genes,
+        tcChange: tcChange,
+        pcChange: pcChange
     };
 
     return params;
