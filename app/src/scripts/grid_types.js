@@ -33,26 +33,29 @@ var GridTypes = {
 
     ion: {
         columns: [
-            { column: 0, name: 'assay_folder', header: 'Assay' },
-            { column: 1, name: 'cmol_id', header: 'CMOL ID' },
-            { column: 2, name: 'accession_id', header: 'ACCN' },
-            { column: 3, name: 'mrn', header: 'MRN' },
-            { column: 4, name: 'locus', header: 'Locus' },
-            { column: 5, name: 'type', header: 'Type' },
-            { column: 6, name: 'genes', header: 'Genes',
+            { column: 0, name: 'analysis_date', header: 'Analysis Date', nowrap: true },
+            { column: 1, name: 'assay_folder', header: 'Assay' },
+            { column: 2, name: 'cmol_id', header: 'CMOL ID', nowrap: true },
+            { column: 3, name: 'accession_id', header: 'ACCN' },
+            { column: 4, name: 'mrn', header: 'MRN' },
+            { column: 5, name: 'locus', header: 'Locus' },
+            { column: 6, name: 'type', header: 'Type' },
+            { column: 7, name: 'genes', header: 'Genes',
                 hrefName: "genes", href: "https://www.genecards.org/cgi-bin/carddisp.pl?gene=" },
-            { column: 7, name: 'filter', header: 'Filter' },
-            { column: 8, name: 'genotype', header: 'Genotype' },
+            { column: 8, name: 'filter', header: 'Filter' },
             { column: 9, name: 'ref', header: 'Ref' }, 
-            { column: 10, name: 'transcript', header: 'Transcript',
+            { column: 10, name: 'normalized_alt', header: 'Alt' }, 
+            { column: 11, name: 'coverage', header: 'Coverage' },
+            { column: 12, name: 'allele_frequency', header: 'Allele Freq.', nowrap: true },
+            { column: 13, name: 'transcript', header: 'Transcript',
                 hrefName: "transcript", href: "https://www.ncbi.nlm.nih.gov/nuccore/" 
             },
-            { column: 11, name: 'coding', header: 'Transcript Change' }, 
-            { column: 12, name: 'protein', header: 'Protein Change' }
+            { column: 14, name: 'coding', header: 'Transcript Change' }, 
+            { column: 15, name: 'protein', header: 'Protein Change' }
         ],
         items: []
     },
-    
+
     gc: {
         columns: [
             { column: 0, name: 'checkbox', header: 'Select', 

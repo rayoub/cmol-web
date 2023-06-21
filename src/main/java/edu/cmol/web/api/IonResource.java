@@ -99,6 +99,7 @@ public class IonResource extends BaseResource {
 
             generator.writeStartObject();
     
+            generator.write("analysis_date", row.getAnalysisDate());
             generator.write("assay_folder", row.getAssayFolder());
             generator.write("cmol_id", row.getCmolId());
             generator.write("mrn", row.getMrn());
@@ -109,8 +110,16 @@ public class IonResource extends BaseResource {
             generator.write("genotype", row.getGenotype());
             generator.write("filter", row.getFilter());
             generator.write("ref", row.getRef());
+            generator.write("normalized_alt", row.getNormalizedAlt());
+            generator.write("coverage", row.getCoverage());
+            generator.write("allele_coverage", row.getAlleleCoverage());
+            generator.write("allele_ratio", row.getAlleleRatio());
+            generator.write("allele_frequency", row.getAlleleFrequency());
             generator.write("genes", row.getGenes().replace("_", " "));
             generator.write("transcript", row.getTranscript());
+            generator.write("location", row.getLocation());
+            generator.write("function", row.getFunction());
+            generator.write("exon", row.getExon());
             generator.write("coding", row.getCoding());
             generator.write("protein", row.getProtein());
 
