@@ -136,6 +136,7 @@ public class QCIResource extends BaseResource {
             generator.write("diagnosis", row.getDiagnosis());
             generator.write("interpretation", row.getInterpretation().replace("_", " "));
             generator.write("physician", row.getPhysician());
+            generator.write("locus", row.getLocus());
             generator.write("gene", row.getGene());
             generator.write("alleleFraction", row.getAlleleFraction());
             generator.write("transcript", row.getTranscript());

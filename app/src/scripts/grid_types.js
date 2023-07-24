@@ -13,20 +13,21 @@ var GridTypes = {
             { column: 5, name: 'mrn', header: 'MRN', nowrap: true },
             { column: 6, name: 'diagnosis', header: 'Diagnosis' }, 
             { column: 7, name: 'interpretation', header: 'Interpretation' }, 
-            { column: 8, name: 'gene', header: 'Gene',
+            { column: 8, name: 'locus', header: 'Locus' },
+            { column: 9, name: 'gene', header: 'Gene',
                 hrefName: "gene", href: "https://www.genecards.org/cgi-bin/carddisp.pl?gene="
             },
-            { column: 9, name: 'alleleFraction', header: 'AF %', isNumeric : true, nowrap: true }, 
-            { column: 10, name: 'transcript', header: 'Transcript',
+            { column: 10, name: 'alleleFraction', header: 'AF %', isNumeric : true, nowrap: true }, 
+            { column: 11, name: 'transcript', header: 'Transcript',
                 hrefName: "transcript", href: "https://www.ncbi.nlm.nih.gov/nuccore/"
             },
-            { column: 11, name: 'transcriptChange', header: 'Change', pre: true }, 
-            { column: 12, name: 'transcriptExon', header: 'Exon' }, 
-            { column: 13, name: 'protein', header: 'Protein',
+            { column: 12, name: 'transcriptChange', header: 'Change', pre: true }, 
+            { column: 13, name: 'transcriptExon', header: 'Exon' }, 
+            { column: 14, name: 'protein', header: 'Protein',
                 hrefName: "protein", href: "https://www.ncbi.nlm.nih.gov/protein/"
             },
-            { column: 14, name: 'proteinChange', header: 'Change' }, 
-            { column: 15, name: 'assessment', header: 'Assessment' }
+            { column: 15, name: 'proteinChange', header: 'Change' }, 
+            { column: 16, name: 'assessment', header: 'Assessment' }
         ],
         items: []
     },
