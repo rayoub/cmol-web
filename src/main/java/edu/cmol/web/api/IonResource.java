@@ -15,6 +15,7 @@ import javax.ws.rs.core.Response.ResponseBuilder;
 import org.apache.commons.lang3.exception.ExceptionUtils;
 
 import edu.kumc.cmol.ion.IonDb;
+import edu.kumc.cmol.ion.IonStat;
 import edu.kumc.cmol.ion.QueryCriteria;
 import edu.kumc.cmol.ion.QueryRow;
 
@@ -134,5 +135,62 @@ public class IonResource extends BaseResource {
             generator.writeEnd();
         }
         generator.writeEnd();
+    }
+    
+    @GET
+    @Path("stats")
+    @Produces("application/pdf")
+    public Response getStats() throws Exception {
+    
+        // get response json
+        String json = "{}";
+        try {
+   
+            List<IonStat> stats = IonDb.getStats();
+
+            StringWriter writer = new StringWriter();
+            JsonGenerator generator = Json.createGenerator(writer);
+            generator.writeStartObject();
+            generator.write("code", "0");
+            generator.writeKey("records");
+            generator.writeStartArray();
+            for (int i = 0; i < stats.size(); i++) {
+
+                IonStat stat = stats.get(i);
+
+                generator.writeStartObject();
+        
+                generator.write("descr", stat.getDescr());
+                generator.write("stat", stat.getStat());
+
+                generator.writeEnd();
+            }
+            generator.writeEnd();
+            generator.writeEnd();
+            generator.close();
+            json = writer.toString();
+        }
+        catch (Exception e) {
+
+            StringWriter writer = new StringWriter();
+            JsonGenerator generator = Json.createGenerator(writer);
+            generator.writeStartObject();
+            generator.write("code", -1);
+
+            String trace = ExceptionUtils.getStackTrace(e);
+            if (e.getMessage() != null) {
+                generator.write("message", trace);
+            }
+            else {
+                generator.write("string", trace);
+            }
+            generator.writeEnd();
+            generator.close();
+            json = writer.toString();
+        }
+
+        // response
+        ResponseBuilder builder = Response.ok(json);
+        return builder.build();
     }
 }

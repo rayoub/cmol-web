@@ -99,6 +99,16 @@ $(document).ready(function(){
         }); // end done
     }); // end click
 
+    // update the diagnosis selectbox
+    $.getJSON('api/ion/stats')
+        .done(function (data) {
+            if (data.code === "0") {
+                if (data.records.length > 0) {
+                    $("#sampleCount").html(data.records[0]["stat"]);
+                }
+            } 
+        }); // end done
+
 }); // end jquery
 
 var getParams = function () {
