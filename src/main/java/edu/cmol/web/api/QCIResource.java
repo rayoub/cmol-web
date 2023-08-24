@@ -149,7 +149,21 @@ public class QCIResource extends BaseResource {
             }
             generator.write("protein", row.getProtein());
             generator.write("proteinChange", row.getProteinChange());
-            generator.write("assessment", row.getAssessment());
+
+            String assessment = row.getAssessment();
+            if (assessment.equalsIgnoreCase("pathogenic")) {
+                assessment = "Tier I: " + assessment;
+            }
+            else if (assessment.equalsIgnoreCase("likely pathogenic")) {
+                assessment = "Tier II: " + assessment;
+            }
+            else if (assessment.equalsIgnoreCase("uncertain significance")) {
+                assessment = "Tier III: " + assessment;
+            }
+            else {
+                assessment = "Tier IV: " + assessment;
+            }
+            generator.write("assessment", assessment);
 
             generator.writeEnd();
         }
