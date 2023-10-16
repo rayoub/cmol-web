@@ -131,6 +131,7 @@ public class IonResource extends BaseResource {
             generator.write("exon", row.getExon());
             generator.write("coding", row.getCoding());
             generator.write("protein", row.getProtein());
+            generator.write("copy_number", row.getCopyNumber());
 
             generator.writeEnd();
         }

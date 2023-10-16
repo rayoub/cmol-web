@@ -41,18 +41,19 @@ var GridTypes = {
             { column: 4, name: 'mrn', header: 'MRN' },
             { column: 5, name: 'locus', header: 'Locus' },
             { column: 6, name: 'type', header: 'Type' },
-            { column: 7, name: 'genes', header: 'Genes',
+            { column: 7, name: 'copy_number', header: 'CNV'},
+            { column: 8, name: 'genes', header: 'Genes',
                 hrefName: "genes", href: "https://www.genecards.org/cgi-bin/carddisp.pl?gene=" },
-            { column: 8, name: 'filter', header: 'Filter' },
-            { column: 9, name: 'ref', header: 'Ref' }, 
-            { column: 10, name: 'normalized_alt', header: 'Alt' }, 
-            { column: 11, name: 'coverage', header: 'Coverage' },
-            { column: 12, name: 'allele_frequency', header: 'Allele Freq.', nowrap: true },
-            { column: 13, name: 'transcript', header: 'Transcript',
+            { column: 9, name: 'filter', header: 'Filter' },
+            { column: 10, name: 'ref', header: 'Ref' }, 
+            { column: 11, name: 'normalized_alt', header: 'Alt' }, 
+            { column: 12, name: 'coverage', header: 'Coverage' },
+            { column: 13, name: 'allele_frequency', header: 'Allele Freq.', nowrap: true },
+            { column: 14, name: 'transcript', header: 'Transcript',
                 hrefName: "transcript", href: "https://www.ncbi.nlm.nih.gov/nuccore/" 
             },
-            { column: 14, name: 'coding', header: 'Transcript Change' }, 
-            { column: 15, name: 'protein', header: 'Protein Change' }
+            { column: 15, name: 'coding', header: 'Transcript Change' }, 
+            { column: 16, name: 'protein', header: 'Protein Change' }
         ],
         items: []
     },

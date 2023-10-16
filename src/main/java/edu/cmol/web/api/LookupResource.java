@@ -14,7 +14,6 @@ import javax.ws.rs.core.Response.ResponseBuilder;
 
 import edu.kumc.cmol.core.LookupType;
 import edu.kumc.cmol.core.LookupVal;
-import edu.kumc.cmol.ion.IonLookup;
 import edu.kumc.cmol.qci.QciLookup;
 
 @Path("lookup")
@@ -32,17 +31,14 @@ public class LookupResource extends BaseResource {
             if (lookupType == LookupType.DIAGNOSES.getId()) {
                 vals = QciLookup.getDiagnoses();
             }
-            else { // if (lookupType == LookupType.ASSAYIDS.getId()) {
-                vals = IonLookup.getAssayIds();
-                vals.add(0, new LookupVal("", ""));
-            }
-
             StringWriter writer = new StringWriter();
             JsonGenerator generator = Json.createGenerator(writer);
             generator.writeStartObject();
             generator.write("code", "0");
             generator.writeKey("records");
-            writeLookupVals(generator, vals);
+            if (vals != null) {
+                writeLookupVals(generator, vals);
+            }
             generator.writeEnd();
             generator.close();
             json = writer.toString();
