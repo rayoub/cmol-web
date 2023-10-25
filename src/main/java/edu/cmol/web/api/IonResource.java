@@ -14,8 +14,8 @@ import javax.ws.rs.core.Response.ResponseBuilder;
 
 import org.apache.commons.lang3.exception.ExceptionUtils;
 
+import edu.kumc.cmol.ion.DownloadType;
 import edu.kumc.cmol.ion.IonDb;
-import edu.kumc.cmol.ion.IonStat;
 import edu.kumc.cmol.ion.QueryCriteria;
 import edu.kumc.cmol.ion.QueryRow;
 
@@ -146,8 +146,8 @@ public class IonResource extends BaseResource {
         // get response json
         String json = "{}";
         try {
-   
-            List<IonStat> stats = IonDb.getStats();
+  
+            int sampleCount = IonDb.getSampleCount(DownloadType.SelectedVariants);
 
             StringWriter writer = new StringWriter();
             JsonGenerator generator = Json.createGenerator(writer);
@@ -155,17 +155,14 @@ public class IonResource extends BaseResource {
             generator.write("code", "0");
             generator.writeKey("records");
             generator.writeStartArray();
-            for (int i = 0; i < stats.size(); i++) {
-
-                IonStat stat = stats.get(i);
 
                 generator.writeStartObject();
         
-                generator.write("descr", stat.getDescr());
-                generator.write("stat", stat.getStat());
+                generator.write("descr", "sample count");
+                generator.write("stat", sampleCount);
 
                 generator.writeEnd();
-            }
+
             generator.writeEnd();
             generator.writeEnd();
             generator.close();
