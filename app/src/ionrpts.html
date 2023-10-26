@@ -19,12 +19,17 @@
         <div class="card m-4">
             <div class="card-header">
                 The <strong>Ion Data</strong> comes from the Ion Torrent sequencer and is used to produce reports using the Ion Reporter.
-                <div>
-                    Sample Count: <span id="sampleCount"></span>
-                </div>
             </div>
             <div class="card-body">
                 <form>
+                    <div id="reportsDiv" class="row">
+                        <label class="form-label col-xs-12 col-sm-3 col-md-2">Reports:</label>
+                        <div class="col-xs-12 col-sm-9 col-md-10">
+                            <select id="reports" class="form-select">
+								<option value="1">CNV Stats</option>
+                            </select>
+                        </div>
+                    </div>
                 </form>
             </div>
             <div class="card-footer">

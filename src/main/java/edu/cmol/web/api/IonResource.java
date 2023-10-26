@@ -184,39 +184,56 @@ public class IonResource extends BaseResource {
     }
     
     @GET
-    @Path("cnv_stats")
+    @Path("report")
     @Produces("application/json")
-    public Response getCnvStats() throws Exception {
+    public Response getReport(
+        @QueryParam("reportId") int reportId
+    ) throws Exception {
     
         // get response json
         String json = "{}";
         try {
-  
-            List<IonCnvStat> stats = IonDb.getCnvStats();
+ 
+            IonReport report = IonReport.fromId(reportId);
 
-            StringWriter writer = new StringWriter();
-            JsonGenerator generator = Json.createGenerator(writer);
-            generator.writeStartObject();
-            generator.write("code", "0");
-            generator.writeKey("records");
-            generator.writeStartArray();
-            for (IonCnvStat stat : stats) {
+            if (report == IonReport.CnvStats) {
+                List<IonCnvStat> stats = IonDb.getCnvStats();
+
+                StringWriter writer = new StringWriter();
+                JsonGenerator generator = Json.createGenerator(writer);
                 generator.writeStartObject();
-        
-                generator.write("gene", stat.getGene());
-                generator.write("sn", stat.getSn());
-                generator.write("gn", stat.getGn());
-                generator.write("gnPct", stat.getGnPct());
-                generator.write("minCn", stat.getMinCn());
-                generator.write("maxCn", stat.getMaxCn());
-                generator.write("avgCn", stat.getAvgCn());
+                generator.write("code", "0");
+                generator.writeKey("records");
+                generator.writeStartArray();
+                for (IonCnvStat stat : stats) {
+                    generator.writeStartObject();
+            
+                    generator.write("gene", stat.getGene());
+                    generator.write("sn", stat.getSn());
+                    generator.write("gn", stat.getGn());
+                    generator.write("gnPct", stat.getGnPct());
+                    generator.write("minCn", stat.getMinCn());
+                    generator.write("maxCn", stat.getMaxCn());
+                    generator.write("avgCn", stat.getAvgCn());
 
+                    generator.writeEnd();
+                }
                 generator.writeEnd();
+                generator.writeEnd();
+                generator.close();
+                json = writer.toString();
             }
-            generator.writeEnd();
-            generator.writeEnd();
-            generator.close();
-            json = writer.toString();
+            else {
+
+                StringWriter writer = new StringWriter();
+                JsonGenerator generator = Json.createGenerator(writer);
+                generator.writeStartObject();
+                generator.write("code", -1);
+                generator.write("message", "Undefined Report Id");
+                generator.writeEnd();
+                generator.close();
+                json = writer.toString();
+            }
         }
         catch (Exception e) {
 

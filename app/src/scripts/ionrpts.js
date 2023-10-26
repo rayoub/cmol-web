@@ -24,7 +24,7 @@ $(document).ready(function(){
         
         var params = getParams();
 
-        return $.getJSON('api/ion/cnv_stats') // + $.param(params))
+        return $.getJSON('api/ion/report?' + $.param(params))
         .done(function (data) {
             
             $("#waitTable").hide();
@@ -101,7 +101,10 @@ $(document).ready(function(){
 
 var getParams = function () {
 
+    var reportId = $.trim($("#reports").val())
+
     var params = {
+        reportId : reportId
     };
 
     return params;
