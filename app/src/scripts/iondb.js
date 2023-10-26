@@ -100,12 +100,10 @@ $(document).ready(function(){
     }); // end click
 
     // update the diagnosis selectbox
-    $.getJSON('api/ion/stats')
+    $.getJSON('api/ion/sample_count')
         .done(function (data) {
             if (data.code === "0") {
-                if (data.records.length > 0) {
-                    $("#sampleCount").html(data.records[0]["stat"]);
-                }
+                $("#sampleCount").html(data.sampleCount);
             } 
         }); // end done
 

@@ -15,6 +15,7 @@ import javax.ws.rs.core.Response.ResponseBuilder;
 import org.apache.commons.lang3.exception.ExceptionUtils;
 
 import edu.kumc.cmol.ion.DownloadType;
+import edu.kumc.cmol.ion.IonCnvStat;
 import edu.kumc.cmol.ion.IonDb;
 import edu.kumc.cmol.ion.QueryCriteria;
 import edu.kumc.cmol.ion.QueryRow;
@@ -139,9 +140,9 @@ public class IonResource extends BaseResource {
     }
     
     @GET
-    @Path("stats")
-    @Produces("application/pdf")
-    public Response getStats() throws Exception {
+    @Path("sample_count")
+    @Produces("application/json")
+    public Response getSampleCount() throws Exception {
     
         // get response json
         String json = "{}";
@@ -153,16 +154,65 @@ public class IonResource extends BaseResource {
             JsonGenerator generator = Json.createGenerator(writer);
             generator.writeStartObject();
             generator.write("code", "0");
+            generator.write("sampleCount", sampleCount);
+            generator.writeEnd();
+            generator.close();
+            json = writer.toString();
+        }
+        catch (Exception e) {
+
+            StringWriter writer = new StringWriter();
+            JsonGenerator generator = Json.createGenerator(writer);
+            generator.writeStartObject();
+            generator.write("code", -1);
+
+            String trace = ExceptionUtils.getStackTrace(e);
+            if (e.getMessage() != null) {
+                generator.write("message", trace);
+            }
+            else {
+                generator.write("string", trace);
+            }
+            generator.writeEnd();
+            generator.close();
+            json = writer.toString();
+        }
+
+        // response
+        ResponseBuilder builder = Response.ok(json);
+        return builder.build();
+    }
+    
+    @GET
+    @Path("cnv_stats")
+    @Produces("application/json")
+    public Response getCnvStats() throws Exception {
+    
+        // get response json
+        String json = "{}";
+        try {
+  
+            List<IonCnvStat> stats = IonDb.getCnvStats();
+
+            StringWriter writer = new StringWriter();
+            JsonGenerator generator = Json.createGenerator(writer);
+            generator.writeStartObject();
+            generator.write("code", "0");
             generator.writeKey("records");
             generator.writeStartArray();
-
+            for (IonCnvStat stat : stats) {
                 generator.writeStartObject();
         
-                generator.write("descr", "sample count");
-                generator.write("stat", sampleCount);
+                generator.write("gene", stat.getGene());
+                generator.write("sn", stat.getSn());
+                generator.write("gn", stat.getGn());
+                generator.write("gnPct", stat.getGnPct());
+                generator.write("minCn", stat.getMinCn());
+                generator.write("maxCn", stat.getMaxCn());
+                generator.write("avgCn", stat.getAvgCn());
 
                 generator.writeEnd();
-
+            }
             generator.writeEnd();
             generator.writeEnd();
             generator.close();
