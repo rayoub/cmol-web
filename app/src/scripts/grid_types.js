@@ -57,6 +57,19 @@ var GridTypes = {
         ],
         items: []
     },
+    
+    ion_cnv_stats: {
+        columns: [
+            { column: 0, name: 'gene', header: 'Gene' },
+            { column: 1, name: 'gn', header: 'Sample Count' },
+            { column: 2, name: 'sn', header: 'Total Samples' },
+            { column: 3, name: 'gnPct', header: 'Sample %', isNumeric: true },
+            { column: 4, name: 'minCn', header: 'Min Copy Number', isNumeric: true },
+            { column: 5, name: 'maxCn', header: 'Max Copy Number', isNumeric: true },
+            { column: 6, name: 'avgCn', header: 'Avg Copy Number', isNumeric: true }
+        ],
+        items: []
+    },
 
     gc: {
         columns: [
