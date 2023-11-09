@@ -55,7 +55,7 @@ $(document).ready(function(){
                         $.each(gt.columns, function (j, column) {
                         
                             if (column.isNumeric) {
-                                tr += "<td>" + Functions.scoreConverter(item[column.name]) + "</td>";
+                                tr += "<td>" + Functions.preciseScoreConverter(item[column.name]) + "</td>";
                             }
                             else {
                                 tr += "<td>" + item[column.name] + "</td>";
@@ -102,9 +102,11 @@ $(document).ready(function(){
 var getParams = function () {
 
     var reportId = $.trim($("#reports").val())
+    var cnvTypeId = $.trim($("#cnvTypes").val())
 
     var params = {
-        reportId : reportId
+        reportId : reportId,
+        cnvTypeId : cnvTypeId
     };
 
     return params;

@@ -14,6 +14,7 @@ import javax.ws.rs.core.Response.ResponseBuilder;
 
 import org.apache.commons.lang3.exception.ExceptionUtils;
 
+import edu.kumc.cmol.ion.CnvType;
 import edu.kumc.cmol.ion.DownloadType;
 import edu.kumc.cmol.ion.IonCnvStat;
 import edu.kumc.cmol.ion.IonDb;
@@ -133,6 +134,7 @@ public class IonResource extends BaseResource {
             generator.write("coding", row.getCoding());
             generator.write("protein", row.getProtein());
             generator.write("copy_number", row.getCopyNumber());
+            generator.write("copy_number_type", row.getCopyNumberType());
 
             generator.writeEnd();
         }
@@ -187,7 +189,8 @@ public class IonResource extends BaseResource {
     @Path("report")
     @Produces("application/json")
     public Response getReport(
-        @QueryParam("reportId") int reportId
+        @QueryParam("reportId") int reportId,
+        @QueryParam("cnvTypeId") int cnvTypeId
     ) throws Exception {
     
         // get response json
@@ -197,7 +200,7 @@ public class IonResource extends BaseResource {
             IonReport report = IonReport.fromId(reportId);
 
             if (report == IonReport.CnvStats) {
-                List<IonCnvStat> stats = IonDb.getCnvStats();
+                List<IonCnvStat> stats = IonDb.getCnvStats(CnvType.fromId(cnvTypeId));
 
                 StringWriter writer = new StringWriter();
                 JsonGenerator generator = Json.createGenerator(writer);

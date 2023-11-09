@@ -16,6 +16,22 @@ var Functions = {
             }
         }
     },
+    
+    preciseScoreConverter: function (value) {
+        
+        if (value === '-1') {
+            return 'N/A';
+        }
+        else {
+            var formatted = numeral(value).format('0.0000');
+            if (formatted === 'NaN') {
+                return '0.0000';
+            }
+            else {
+                return formatted;
+            }
+        }
+    },
 
     getQueryVariable: function (name)
     {
