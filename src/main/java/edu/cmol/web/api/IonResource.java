@@ -29,6 +29,7 @@ public class IonResource extends BaseResource {
     @GET
     @Produces("application/json")
     public Response get(
+        @QueryParam("downloadType") String downloadType,
         @QueryParam("fromDate") String fromDate,
         @QueryParam("toDate") String toDate,
         @QueryParam("cmol_id") String cmolId,
@@ -43,6 +44,7 @@ public class IonResource extends BaseResource {
         try {
    
             QueryCriteria criteria = new QueryCriteria();
+            criteria.setDownloadType(downloadType);
             criteria.setFromDate(fromDate);
             criteria.setToDate(toDate);
             criteria.setCmolId(cmolId);            

@@ -111,6 +111,7 @@ $(document).ready(function(){
 
 var getParams = function () {
 
+    var downloadType = $.trim($("#downloadTypes").val())
     var fromDate = $.trim($("#fromDate").val());
     var toDate = $.trim($("#toDate").val());
     var cmol_id = $.trim($("#cmolId").val())
@@ -120,6 +121,7 @@ var getParams = function () {
     var pcChange = $.trim($("#pcChange").val());
 
     var params = {
+        downloadType: downloadType,
         fromDate: fromDate,
         toDate: toDate,
         cmol_id: cmol_id,
