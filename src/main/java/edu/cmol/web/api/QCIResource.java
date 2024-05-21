@@ -129,6 +129,7 @@ public class QCIResource extends BaseResource {
             lastSampleId = sampleId;
 
             generator.write("pdf", "pdf");
+            generator.write("sample_id", row.getSampleId());
             generator.write("mrn", row.getMrn());
             generator.write("accession", row.getAccession());
             generator.write("testDate", row.getTestDate());
@@ -191,10 +192,10 @@ public class QCIResource extends BaseResource {
     @GET
     @Path("pdf")
     @Produces("application/pdf")
-    public Response getPdf(@QueryParam("accession") String accession) throws Exception {
+    public Response getPdf(@QueryParam("sample_id") String sampleId) throws Exception {
     
         String token = WS.getToken();
-        InputStream inputPdf = WS.getPdf(token, accession); 
+        InputStream inputPdf = WS.getPdf(token, sampleId); 
         
         StreamingOutput outputPdf = new StreamingOutput() {
             @Override
@@ -204,7 +205,7 @@ public class QCIResource extends BaseResource {
         };
 
         ResponseBuilder builder = Response.ok((Object) outputPdf);
-        builder.header("Content-Disposition","filename=\"" + accession + ".pdf\"");  
+        builder.header("Content-Disposition","filename=\"" + sampleId + ".pdf\"");  
 
         return builder.build();
     }

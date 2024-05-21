@@ -11,31 +11,18 @@
         <h3>Clinical Molecular Oncology Laboratory Website</h3>
         <ul class="nav"> 
             <a class="nav-link" href="/">QCI Data</a> 
-            <a class="nav-link disabled" href="/iondb.html">Ion Data</a> 
+            <a class="nav-link" href="/iondb.html">Ion Data</a> 
             <a class="nav-link" href="/ionrpts.html">Ion Reports</a> 
-            <a class="nav-link" href="/labdb.html">Lab Data</a> 
+            <a class="nav-link disabled" href="/">Lab Data</a> 
         </ul>
     </header>
     <section id="criteria">
         <div class="card m-4">
             <div class="card-header">
-                The <strong>Ion Data</strong> comes from the Ion Torrent sequencer and is used to produce reports using the Ion Reporter.
-                <div>
-                    Sample Count: <span id="sampleCount"></span>
-                </div>
+                The <strong>Lab Data</strong> comes directly from the Excel report files managed by CMOL. 
             </div>
             <div class="card-body">
                 <form>
-                    <div id="downloadTypesDiv" class="row">
-                        <label class="form-label col-xs-12 col-sm-3 col-md-2">Download Type:</label>
-                        <div class="col-xs-12 col-sm-9 col-md-10">
-                            <select id="downloadTypes" class="form-select">
-								<option value="SelectedVariants">Selected Variants</option>
-								<option value="Filtered">Filtered Variants</option>
-                            </select>
-                            <p class="form-text"></p>
-                        </div>
-                    </div>
                     <div id="fromDateDiv" class="row">
                         <label class="form-label col-xs-12 col-sm-3 col-md-2">From Date:</label>
                         <div class="col-xs-12 col-sm-9 col-md-10">
@@ -50,13 +37,6 @@
                             <p class="form-text"></p>
                         </div>
                     </div>
-                    <div id="cmolIdDiv" class="row">
-                        <label class="form-label col-xs-12 col-sm-3 col-md-2">Cmol Id:</label>
-                        <div class="col-xs-12 col-sm-9 col-md-10">
-                            <input id="cmolId" type="text" class="form-control" maxlength="64">
-                            <p class="form-text"></p>
-                        </div>
-                    </div>
                     <div id="mrnsDiv" class="row">
                         <label class="form-label col-xs-12 col-sm-3 col-md-2">MRNs:</label>
                         <div class="col-xs-12 col-sm-9 col-md-10">
@@ -64,7 +44,7 @@
                             <p class="form-text">a semi-colon separated list of MRNs</p>
                         </div>
                     </div>
-                    <div id="geneDiv" class="row">
+                    <div id="genesDiv" class="row">
                         <label class="form-label col-xs-12 col-sm-3 col-md-2">Genes:</label>
                         <div class="col-xs-12 col-sm-9 col-md-10">
                             <input id="genes" type="text" class="form-control" maxlength="64">
@@ -96,6 +76,7 @@
         <div class="card m-4">
             <div id="tableHeader" class="card-header" style="display: none;">
                 <ul>
+                    <li>Click the <strong>pdf</strong> link in the report column to download a QCI report. There is one report per accession #.</li>
                     <li>Export to a CSV file or scroll horizontally at the bottom of the table.</li>
                     <li>Alternatively, hold down the [Shift] key and use the mouse wheel to scroll horizontally.</li>
                 </ul>
@@ -155,7 +136,7 @@
     <script src="scripts/numeral.min.js"></script>
     <script src="scripts/functions.js"></script>
     <script src="scripts/export.js"></script>
-    <script src="scripts/iondb.js"></script>
+    <script src="scripts/labdb.js"></script>
 </body>
 </html>
 
