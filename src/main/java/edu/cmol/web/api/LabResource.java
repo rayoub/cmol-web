@@ -30,6 +30,7 @@ public class LabResource extends BaseResource {
         @QueryParam("toDate") String toDate,
         @QueryParam("mrns") String mrns, 
         @QueryParam("genes") String genes, 
+        @QueryParam("exon") String exon, 
         @QueryParam("tcChange") String tcChange, 
         @QueryParam("pcChange") String pcChange) throws Exception {
     
@@ -43,6 +44,7 @@ public class LabResource extends BaseResource {
             criteria.setToDate(toDate);
             criteria.setMrns(mrns);
             criteria.setGenes(genes);
+            criteria.setExon(exon);
             criteria.setTranscriptChange(tcChange);
             criteria.setProteinChange(pcChange);
 

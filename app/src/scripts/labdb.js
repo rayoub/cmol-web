@@ -106,6 +106,7 @@ var getParams = function () {
     var toDate = $.trim($("#toDate").val());
     var mrns = $.trim($("#mrns").val());
     var genes = $.trim($("#genes").val());
+    var exon = $.trim($("#exon").val());
     var tcChange = $.trim($("#tcChange").val());
     var pcChange = $.trim($("#pcChange").val());
 
@@ -114,6 +115,7 @@ var getParams = function () {
         toDate: toDate,
         mrns: mrns,
         genes: genes,
+        exon: exon,
         tcChange: tcChange,
         pcChange: pcChange
     };
