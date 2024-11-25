@@ -14,6 +14,7 @@ import javax.ws.rs.core.Response.ResponseBuilder;
 
 import edu.kumc.cmol.core.LookupType;
 import edu.kumc.cmol.core.LookupVal;
+import edu.kumc.cmol.lab.LabLookup;
 import edu.kumc.cmol.qci.QciLookup;
 
 @Path("lookup")
@@ -27,18 +28,28 @@ public class LookupResource extends BaseResource {
         String json = "{}";
         try {
 
-            List<LookupVal> vals = null;
-            if (lookupType == LookupType.DIAGNOSES.getId()) {
-                vals = QciLookup.getDiagnoses();
-            }
             StringWriter writer = new StringWriter();
             JsonGenerator generator = Json.createGenerator(writer);
             generator.writeStartObject();
             generator.write("code", "0");
             generator.writeKey("records");
-            if (vals != null) {
-                writeLookupVals(generator, vals);
+            if (lookupType == LookupType.QCI_DIAGNOSES.getId()) {
+            
+                List<LookupVal> vals = null;
+                vals = QciLookup.getDiagnoses();
+                if (vals != null) {
+                    writeQciLookupVals(generator, vals);
+                }
             }
+            else { // LookupType.LAB_DIAGNOSES
+                
+                List<String> vals = null;
+                vals = LabLookup.getDiagnoses();
+                if (vals != null) {
+                    writeLabLookupVals(generator, vals);
+                }
+            }
+
             generator.writeEnd();
             generator.close();
             json = writer.toString();
@@ -65,13 +76,25 @@ public class LookupResource extends BaseResource {
         return builder.build();
     }
 
-    private void writeLookupVals(JsonGenerator generator, List<LookupVal> vals) {
+    private void writeQciLookupVals(JsonGenerator generator, List<LookupVal> vals) {
 
         generator.writeStartArray();
         for (int i = 0; i < vals.size(); i++) {
             generator.writeStartObject();
             generator.write("id", vals.get(i).getId());
             generator.write("descr", vals.get(i).getDescr());
+            generator.writeEnd();
+        }
+        generator.writeEnd();
+    }
+    
+    private void writeLabLookupVals(JsonGenerator generator, List<String> vals) {
+
+        generator.writeStartArray();
+        for (int i = 0; i < vals.size(); i++) {
+            generator.writeStartObject();
+            generator.write("id", vals.get(i));
+            generator.write("descr", vals.get(i));
             generator.writeEnd();
         }
         generator.writeEnd();
