@@ -88,10 +88,10 @@ public class IonResource extends BaseResource {
 
             String trace = ExceptionUtils.getStackTrace(e);
             if (e.getMessage() != null) {
-                generator.write("message", trace);
+                generator.write("message", e.getMessage() + System.lineSeparator() + trace);
             }
             else {
-                generator.write("string", trace);
+                generator.write("message", e.toString() + System.lineSeparator() + trace);
             }
             generator.writeEnd();
             generator.close();
@@ -173,10 +173,10 @@ public class IonResource extends BaseResource {
 
             String trace = ExceptionUtils.getStackTrace(e);
             if (e.getMessage() != null) {
-                generator.write("message", trace);
+                generator.write("message", e.getMessage() + System.lineSeparator() + trace);
             }
             else {
-                generator.write("string", trace);
+                generator.write("message", e.toString() + System.lineSeparator() + trace);
             }
             generator.writeEnd();
             generator.close();
