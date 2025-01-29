@@ -14,6 +14,7 @@ import javax.ws.rs.core.Response.ResponseBuilder;
 
 import org.apache.commons.lang3.exception.ExceptionUtils;
 
+import edu.kumc.cmol.core.SampleInfo;
 import edu.kumc.cmol.ion.CnvType;
 import edu.kumc.cmol.ion.DownloadType;
 import edu.kumc.cmol.ion.IonCnvStat;
@@ -145,21 +146,22 @@ public class IonResource extends BaseResource {
     }
     
     @GET
-    @Path("sample_count")
+    @Path("sample_info")
     @Produces("application/json")
     public Response getSampleCount() throws Exception {
     
         // get response json
         String json = "{}";
         try {
-  
-            int sampleCount = IonDb.getSampleCount(DownloadType.SelectedVariants);
+ 
+            SampleInfo info = IonDb.getSampleInfo(DownloadType.SelectedVariants);
 
             StringWriter writer = new StringWriter();
             JsonGenerator generator = Json.createGenerator(writer);
             generator.writeStartObject();
             generator.write("code", "0");
-            generator.write("sampleCount", sampleCount);
+            generator.write("sn", info.getCount());
+            generator.write("ls", info.getLatest());
             generator.writeEnd();
             generator.close();
             json = writer.toString();
