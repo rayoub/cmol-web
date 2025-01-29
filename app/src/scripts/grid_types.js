@@ -62,7 +62,7 @@ var GridTypes = {
             { column: 0, name: 'analysis_date', header: 'Analysis Date', nowrap: true },
             { column: 1, name: 'assay_folder', header: 'Assay' },
             { column: 2, name: 'cmol_id', header: 'CMOL ID', nowrap: true },
-            { column: 3, name: 'accession_id', header: 'ACCN' },
+            { column: 3, name: 'accession_id', header: 'ACCN', nowrap: true },
             { column: 4, name: 'mrn', header: 'MRN' },
             { column: 5, name: 'locus', header: 'Locus' },
             { column: 6, name: 'type', header: 'Type' },
