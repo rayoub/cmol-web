@@ -108,7 +108,7 @@ public class LabResource extends BaseResource {
     private void writeSearchRecordArray(JsonGenerator generator, List<QueryRow> rows) {
 
         int n = 0;
-        String lastCmolId = "";
+        String lastSpecimenId = "";
 
         generator.writeStartArray();
         for (int i = 0; i < rows.size(); i++) {
@@ -117,15 +117,15 @@ public class LabResource extends BaseResource {
 
             generator.writeStartObject();
     
-            String cmolId = row.getCmolId();
-            if (!cmolId.equals(lastCmolId)) {
+            String specimenId = row.getSpecimenId();
+            if (!specimenId.equals(lastSpecimenId)) {
                 n++;
             }
             generator.write("n", n);
-            lastCmolId = cmolId;
+            lastSpecimenId = specimenId;
 
             generator.write("runId", row.getRunId());
-            generator.write("cmolId", row.getCmolId());
+            generator.write("specimenId", row.getSpecimenId());
             generator.write("mrn", row.getMrn());
             generator.write("accession", row.getAccession());
             generator.write("reportedDate", row.getReportedDate());
