@@ -134,7 +134,6 @@ public class QCIResource extends BaseResource {
             generator.write("pdf", "pdf");
             generator.write("sample_id", row.getSampleId());
             generator.write("mrn", row.getMrn());
-            generator.write("accession", row.getAccession());
             generator.write("testDate", row.getTestDate());
             generator.write("testCode", formatTestCode(row.getTestCode()));
             generator.write("diagnosis", row.getDiagnosis());

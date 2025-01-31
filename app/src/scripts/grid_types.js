@@ -9,7 +9,6 @@ var GridTypes = {
             { column: 1, name: 'testDate', header: 'Test Date', nowrap: true },
             { column: 2, name: 'testCode', header: 'Panel' }, 
             { column: 3, name: 'physician', header: 'Physician' }, 
-            { column: 4, name: 'accession', header: 'ACCN' },
             { column: 5, name: 'mrn', header: 'MRN', nowrap: true },
             { column: 6, name: 'diagnosis', header: 'Diagnosis' }, 
             { column: 7, name: 'interpretation', header: 'Interpretation' }, 
