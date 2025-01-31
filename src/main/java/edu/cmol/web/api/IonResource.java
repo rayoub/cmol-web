@@ -115,9 +115,8 @@ public class IonResource extends BaseResource {
     
             generator.write("analysis_date", row.getAnalysisDate());
             generator.write("assay_folder", row.getAssayFolder());
-            generator.write("cmol_id", row.getCmolId());
+            generator.write("specimen_id", row.getCmolId());
             generator.write("mrn", row.getMrn());
-            generator.write("accession_id", row.getAccessionId());
             generator.write("locus", row.getLocus());
             generator.write("type", row.getType());
             generator.write("subtype", row.getSubtype());

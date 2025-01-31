@@ -7,7 +7,7 @@ var GridTypes = {
                 hrefName: "sample_id", href: "api/qci/pdf?sample_id="
             },
             { column: 1, name: 'testDate', header: 'Test Date', nowrap: true },
-            { column: 2, name: 'testCode', header: 'Panel' }, 
+            { column: 2, name: 'testCode', header: 'Panel', nowrap: true }, 
             { column: 3, name: 'physician', header: 'Physician' }, 
             { column: 5, name: 'mrn', header: 'MRN', nowrap: true },
             { column: 6, name: 'diagnosis', header: 'Diagnosis' }, 
@@ -60,8 +60,7 @@ var GridTypes = {
         columns: [
             { column: 0, name: 'analysis_date', header: 'Analysis Date', nowrap: true },
             { column: 1, name: 'assay_folder', header: 'Assay' },
-            { column: 2, name: 'cmol_id', header: 'CMOL ID', nowrap: true },
-            { column: 3, name: 'accession_id', header: 'ACCN', nowrap: true },
+            { column: 2, name: 'specimen_id', header: 'Specimen ID', nowrap: true },
             { column: 4, name: 'mrn', header: 'MRN' },
             { column: 5, name: 'locus', header: 'Locus' },
             { column: 6, name: 'type', header: 'Type' },
