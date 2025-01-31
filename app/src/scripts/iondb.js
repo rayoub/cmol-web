@@ -99,7 +99,7 @@ $(document).ready(function(){
         }); // end done
     }); // end click
 
-    // update the diagnosis selectbox
+    // update the sample info
     $.getJSON('api/ion/sample_info')
         .done(function (data) {
             if (data.code === "0") {

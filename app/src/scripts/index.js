@@ -40,7 +40,7 @@ $(document).ready(function(){
                     var thead = "";
                     $.each(gt.columns, function (i, column) {
                         if (column.nowrap) {
-                            thead += "<th nowrap><span>" + column.header + "</span></th>";
+                            thead += "<th style='white-space: nowrap'><span>" + column.header + "</span></th>";
                         }
                         else {
                             thead += "<th><span>" + column.header + "</span></th>";
@@ -62,7 +62,7 @@ $(document).ready(function(){
                                 tr += "<td>" + link + "</td>";
                             }
                             else if (column.nowrap) {
-                                tr += "<td nowrap>" + item[column.name] + "</td>";
+                                tr += "<td style='white-space: nowrap'>" + item[column.name] + "</td>";
                             }
                             else if (column.pre) {
                                 tr += "<td><pre style='font-family: monospace; font-size: 16px'>" + item[column.name] + "</pre></td>";
@@ -112,6 +112,15 @@ $(document).ready(function(){
                         $('#diagnoses').append(new Option(item["descr"], item["id"]));
                     });
                 }
+            } 
+        }); // end done
+
+    // update the sample info
+    $.getJSON('api/qci/sample_info')
+        .done(function (data) {
+            if (data.code === "0") {
+                $("#sampleCount").html(data.sn);
+                $("#latestSample").html(data.ls);
             } 
         }); // end done
 

@@ -20,6 +20,7 @@ import javax.ws.rs.core.StreamingOutput;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.exception.ExceptionUtils;
 
+import edu.kumc.cmol.core.SampleInfo;
 import edu.kumc.cmol.qci.QciDb;
 import edu.kumc.cmol.qci.QueryCriteria;
 import edu.kumc.cmol.qci.QueryRow;
@@ -209,6 +210,51 @@ public class QCIResource extends BaseResource {
         ResponseBuilder builder = Response.ok((Object) outputPdf);
         builder.header("Content-Disposition","filename=\"" + sampleId + ".pdf\"");  
 
+        return builder.build();
+    }
+
+    @GET
+    @Path("sample_info")
+    @Produces("application/json")
+    public Response getSampleInfo() throws Exception {
+    
+        // get response json
+        String json = "{}";
+        try {
+ 
+            SampleInfo info = QciDb.getSampleInfo();
+
+            StringWriter writer = new StringWriter();
+            JsonGenerator generator = Json.createGenerator(writer);
+            generator.writeStartObject();
+            generator.write("code", "0");
+            generator.write("sn", info.getCount());
+            generator.write("ls", info.getLatest());
+            generator.writeEnd();
+            generator.close();
+            json = writer.toString();
+        }
+        catch (Exception e) {
+
+            StringWriter writer = new StringWriter();
+            JsonGenerator generator = Json.createGenerator(writer);
+            generator.writeStartObject();
+            generator.write("code", -1);
+
+            String trace = ExceptionUtils.getStackTrace(e);
+            if (e.getMessage() != null) {
+                generator.write("message", e.getMessage() + System.lineSeparator() + trace);
+            }
+            else {
+                generator.write("message", e.toString() + System.lineSeparator() + trace);
+            }
+            generator.writeEnd();
+            generator.close();
+            json = writer.toString();
+        }
+
+        // response
+        ResponseBuilder builder = Response.ok(json);
         return builder.build();
     }
 }

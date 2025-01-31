@@ -148,7 +148,7 @@ public class IonResource extends BaseResource {
     @GET
     @Path("sample_info")
     @Produces("application/json")
-    public Response getSampleCount() throws Exception {
+    public Response getSampleInfo() throws Exception {
     
         // get response json
         String json = "{}";

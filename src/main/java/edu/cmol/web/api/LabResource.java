@@ -14,6 +14,7 @@ import javax.ws.rs.core.Response.ResponseBuilder;
 
 import org.apache.commons.lang3.exception.ExceptionUtils;
 
+import edu.kumc.cmol.core.SampleInfo;
 import edu.kumc.cmol.lab.LabDb;
 import edu.kumc.cmol.lab.QueryCriteria;
 import edu.kumc.cmol.lab.QueryRow;
@@ -178,5 +179,50 @@ public class LabResource extends BaseResource {
             lines[index] = (lines[index] == null ? "" : lines[index]) + textChars[i];
         }
         return String.join("..." + System.lineSeparator(), lines);
+    }
+
+    @GET
+    @Path("sample_info")
+    @Produces("application/json")
+    public Response getSampleInfo() throws Exception {
+    
+        // get response json
+        String json = "{}";
+        try {
+ 
+            SampleInfo info = LabDb.getSampleInfo();
+
+            StringWriter writer = new StringWriter();
+            JsonGenerator generator = Json.createGenerator(writer);
+            generator.writeStartObject();
+            generator.write("code", "0");
+            generator.write("sn", info.getCount());
+            generator.write("ls", info.getLatest());
+            generator.writeEnd();
+            generator.close();
+            json = writer.toString();
+        }
+        catch (Exception e) {
+
+            StringWriter writer = new StringWriter();
+            JsonGenerator generator = Json.createGenerator(writer);
+            generator.writeStartObject();
+            generator.write("code", -1);
+
+            String trace = ExceptionUtils.getStackTrace(e);
+            if (e.getMessage() != null) {
+                generator.write("message", e.getMessage() + System.lineSeparator() + trace);
+            }
+            else {
+                generator.write("message", e.toString() + System.lineSeparator() + trace);
+            }
+            generator.writeEnd();
+            generator.close();
+            json = writer.toString();
+        }
+
+        // response
+        ResponseBuilder builder = Response.ok(json);
+        return builder.build();
     }
 }
