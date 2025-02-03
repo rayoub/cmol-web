@@ -27,7 +27,7 @@ public class LabResource extends BaseResource {
     @GET
     @Produces("application/json")
     public Response get(
-        @QueryParam("diagnoses") String diagnoses,
+        @QueryParam("dTerms") String dTerms,
         @QueryParam("fromDate") String fromDate,
         @QueryParam("toDate") String toDate,
         @QueryParam("mrns") String mrns, 
@@ -42,11 +42,7 @@ public class LabResource extends BaseResource {
     
             QueryCriteria criteria = new QueryCriteria();
             
-            if (diagnoses.length() > 0) {
-                String[] d = diagnoses.split(",");
-                criteria.setDiagnoses(d);
-            }
-
+            criteria.setDTerms(dTerms);
             criteria.setFromDate(fromDate);
             criteria.setToDate(toDate);
             criteria.setMrns(mrns);

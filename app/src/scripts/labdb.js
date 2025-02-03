@@ -99,22 +99,6 @@ $(document).ready(function(){
         }); // end done
     }); // end click
 
-    // update the diagnosis selectbox
-    $.getJSON('api/lookup?lookupType=2')
-        .done(function (data) {
-            
-            $("#waitTable").hide();
-            $("#search").prop("disabled", false);
-
-            if (data.code === "0") {
-                if (data.records.length > 0) {
-                    $.each(data.records, function (i, item) {
-                        $('#diagnoses').append(new Option(item["descr"], item["id"]));
-                    });
-                }
-            } 
-        }); // end done
-
     // update the sample info 
     $.getJSON('api/lab/sample_info')
         .done(function (data) {
@@ -128,7 +112,7 @@ $(document).ready(function(){
 
 var getParams = function () {
 
-    var diagnoses = $.trim($("#diagnoses").val())
+    var dTerms = $.trim($("#dTerms").val())
     var fromDate = $.trim($("#fromDate").val());
     var toDate = $.trim($("#toDate").val());
     var mrns = $.trim($("#mrns").val());
@@ -138,7 +122,7 @@ var getParams = function () {
     var pcChange = $.trim($("#pcChange").val());
 
     var params = {
-        diagnoses: diagnoses,
+        dTerms: dTerms,
         fromDate: fromDate,
         toDate: toDate,
         mrns: mrns,
