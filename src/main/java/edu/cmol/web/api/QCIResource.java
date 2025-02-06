@@ -176,7 +176,17 @@ public class QCIResource extends BaseResource {
 
     public static String formatTestCode(String text) {
 
-        return text.replace("NGS ", "").replace("Comprehensive", "Comp");
+        String t = text;
+        if (text.toLowerCase().contains("heme")) {
+            t = "NGS Heme";
+        }
+        else if (text.toLowerCase().contains("common")) {
+            t = "NGS Common";
+        } 
+        else if (text.toLowerCase().contains("comp")) {
+            t = "NGS Comp";
+        }
+        return t;
     }
 
     public static String formatTranscriptChange(String text, int lineLength) {
