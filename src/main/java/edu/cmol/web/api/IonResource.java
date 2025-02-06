@@ -33,7 +33,7 @@ public class IonResource extends BaseResource {
         @QueryParam("downloadType") String downloadType,
         @QueryParam("fromDate") String fromDate,
         @QueryParam("toDate") String toDate,
-        @QueryParam("cmol_id") String cmolId,
+        @QueryParam("specimenId") String specimenId,
         @QueryParam("mrns") String mrns, 
         @QueryParam("genes") String genes,
         @QueryParam("tcChange") String tcChange, 
@@ -48,7 +48,7 @@ public class IonResource extends BaseResource {
             criteria.setDownloadType(downloadType);
             criteria.setFromDate(fromDate);
             criteria.setToDate(toDate);
-            criteria.setCmolId(cmolId);            
+            criteria.setSpecimenId(specimenId);            
             criteria.setMrns(mrns);
             criteria.setGenes(genes);            
             criteria.setTranscriptChange(tcChange);
@@ -115,7 +115,7 @@ public class IonResource extends BaseResource {
     
             generator.write("analysis_date", row.getAnalysisDate());
             generator.write("assay_folder", row.getAssayFolder());
-            generator.write("specimen_id", row.getCmolId());
+            generator.write("specimen_id", row.getSpecimenId());
             generator.write("mrn", row.getMrn());
             generator.write("locus", row.getLocus());
             generator.write("type", row.getType());

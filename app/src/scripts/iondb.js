@@ -115,7 +115,7 @@ var getParams = function () {
     var downloadType = $.trim($("#downloadTypes").val())
     var fromDate = $.trim($("#fromDate").val());
     var toDate = $.trim($("#toDate").val());
-    var cmol_id = $.trim($("#cmolId").val())
+    var specimenId = $.trim($("#specimenId").val())
     var mrns = $.trim($("#mrns").val());
     var genes = $.trim($("#genes").val())
     var tcChange = $.trim($("#tcChange").val());
@@ -125,7 +125,7 @@ var getParams = function () {
         downloadType: downloadType,
         fromDate: fromDate,
         toDate: toDate,
-        cmol_id: cmol_id,
+        specimenId: specimenId,
         mrns: mrns,
         genes: genes,
         tcChange: tcChange,
