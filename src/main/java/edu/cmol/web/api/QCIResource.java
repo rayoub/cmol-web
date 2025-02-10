@@ -143,29 +143,29 @@ public class QCIResource extends BaseResource {
             generator.write("locus", row.getLocus());
             generator.write("gene", row.getGene());
             generator.write("alleleFraction", row.getAlleleFraction());
-            generator.write("transcript", row.getTranscript());
-            generator.write("transcriptChange", row.getTrasncriptChange());
+            generator.write("transcript", row.getTranscript().trim());
+            generator.write("transcriptChange", row.getTrasncriptChange().trim());
             if (row.getTranscriptExon() > -1) {
                 generator.write("transcriptExon", row.getTranscriptExon());
             }
             else {
                 generator.write("transcriptExon", "");
             }
-            generator.write("protein", row.getProtein());
-            generator.write("proteinChange", row.getProteinChange());
+            generator.write("protein", row.getProtein().trim());
+            generator.write("proteinChange", row.getProteinChange().trim());
 
             String assessment = row.getAssessment();
             if (assessment.equalsIgnoreCase("pathogenic")) {
-                assessment = "Tier I: " + assessment;
+                assessment = "Tier I: Pathogenic";
             }
             else if (assessment.equalsIgnoreCase("likely pathogenic")) {
-                assessment = "Tier II: " + assessment;
+                assessment = "Tier II: Likely Pathogenic";
             }
             else if (assessment.equalsIgnoreCase("uncertain significance")) {
-                assessment = "Tier III: " + assessment;
+                assessment = "Tier III: Uncertain Significance";
             }
             else {
-                assessment = "Tier IV: " + assessment;
+                assessment = "Tier IV: Benign and Likely Benign";
             }
             generator.write("assessment", assessment);
 

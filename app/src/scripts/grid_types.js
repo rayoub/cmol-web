@@ -27,7 +27,7 @@ var GridTypes = {
                 hrefName: "protein", href: "https://www.ncbi.nlm.nih.gov/protein/"
             },
             { column: 15, name: 'proteinChange', header: 'Change' }, 
-            { column: 16, name: 'assessment', header: 'Assessment' }
+            { column: 16, name: 'assessment', header: 'Assessment', nowrap: true }
         ],
         items: []
     },
@@ -35,7 +35,7 @@ var GridTypes = {
     lab: {
         columns: [
             { column: 0, name: 'reportedDate', header: 'Reported Date', nowrap: true },
-            { column: 1, name: 'testCode', header: 'Panel' }, 
+            { column: 1, name: 'testCode', header: 'Panel', nowrap: true }, 
             { column: 2, name: 'runId', header: 'Run ID', nowrap: true }, 
             { column: 3, name: 'specimenId', header: 'Specimen ID', nowrap: true },
             { column: 4, name: 'mrn', header: 'MRN', nowrap: true },
@@ -52,7 +52,7 @@ var GridTypes = {
             { column: 11, name: 'transcriptChange', header: 'Change', pre: true }, 
             { column: 12, name: 'transcriptExon', header: 'Exon' }, 
             { column: 13, name: 'proteinChange', header: 'Change' }, 
-            { column: 14, name: 'assessment', header: 'Assessment' }
+            { column: 14, name: 'assessment', header: 'Assessment', nowrap: true }
         ],
         items: []
     },

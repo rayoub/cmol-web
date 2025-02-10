@@ -133,23 +133,23 @@ public class LabResource extends BaseResource {
             generator.write("locus", row.getLocus());
             generator.write("gene", row.getGene());
             generator.write("alleleFraction", row.getAlleleFraction());
-            generator.write("transcript", row.getTranscript());
-            generator.write("transcriptChange", row.getTranscriptChange());
-            generator.write("transcriptExon", row.getTranscriptExon());
-            generator.write("proteinChange", row.getProteinChange());
+            generator.write("transcript", row.getTranscript().trim());
+            generator.write("transcriptChange", row.getTranscriptChange().trim());
+            generator.write("transcriptExon", row.getTranscriptExon().trim());
+            generator.write("proteinChange", row.getProteinChange().trim());
 
             String assessment = row.getAssessment();
             if (assessment.equalsIgnoreCase("pathogenic")) {
-                assessment = "Tier I: " + assessment;
+                assessment = "Tier I: Pathogenic";
             }
             else if (assessment.equalsIgnoreCase("likely pathogenic")) {
-                assessment = "Tier II: " + assessment;
+                assessment = "Tier II: Likely Pathogenic";
             }
             else if (assessment.equalsIgnoreCase("uncertain significance")) {
-                assessment = "Tier III: " + assessment;
+                assessment = "Tier III: Uncertain Significance";
             }
             else {
-                assessment = "Tier IV: " + assessment;
+                assessment = "Tier IV: Benign and Likely Benign";
             }
             generator.write("assessment", assessment);
             generator.write("reported", row.getReported());
@@ -161,7 +161,17 @@ public class LabResource extends BaseResource {
 
     public static String formatTestCode(String text) {
 
-        return text.replace("NGS ", "").replace("Comprehensive", "Comp");
+        String t = text;
+        if (text.toLowerCase().contains("heme")) {
+            t = "NGS Heme";
+        }
+        else if (text.toLowerCase().contains("common")) {
+            t = "NGS Common";
+        } 
+        else if (text.toLowerCase().contains("comp")) {
+            t = "NGS Comp";
+        }
+        return t;
     }
 
     public static String formatTranscriptChange(String text, int lineLength) {
