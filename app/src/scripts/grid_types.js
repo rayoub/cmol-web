@@ -21,7 +21,7 @@ var GridTypes = {
             { column: 11, name: 'transcript', header: 'Transcript',
                 hrefName: "transcript", href: "https://www.ncbi.nlm.nih.gov/nuccore/"
             },
-            { column: 12, name: 'transcriptChange', header: 'Change', pre: true }, 
+            { column: 12, name: 'transcriptChange', header: 'Change' },
             { column: 13, name: 'transcriptExon', header: 'Exon' }, 
             { column: 14, name: 'protein', header: 'Protein',
                 hrefName: "protein", href: "https://www.ncbi.nlm.nih.gov/protein/"
@@ -49,7 +49,7 @@ var GridTypes = {
             { column: 10, name: 'transcript', header: 'Transcript',
                 hrefName: "transcript", href: "https://www.ncbi.nlm.nih.gov/nuccore/"
             },
-            { column: 11, name: 'transcriptChange', header: 'Change', pre: true }, 
+            { column: 11, name: 'transcriptChange', header: 'Change' },
             { column: 12, name: 'transcriptExon', header: 'Exon' }, 
             { column: 13, name: 'proteinChange', header: 'Change' }, 
             { column: 14, name: 'assessment', header: 'Assessment', nowrap: true }
