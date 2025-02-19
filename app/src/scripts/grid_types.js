@@ -105,7 +105,7 @@ var GridTypes = {
                 check: true 
             },
             { column: 2, name: 'pdf', header: 'Report',
-                hrefName: 'accession', href: 'api/qci/pdf?accession='
+                hrefName: 'accession', href: 'api/qci/pdf?sample_id='
             },
             { column: 3, name: 'testDate', header: 'Test Date', nowrap: true },
             { column: 4, name: 'testCode', header: 'Panel' }, 
