@@ -10,18 +10,18 @@
     <header class="m-4">
         <h3>Clinical Molecular Oncology Laboratory Website</h3>
         <ul class="nav"> 
-            <a class="nav-link disabled" href="/">QCI Data</a> 
-            <a class="nav-link" href="/labdb.html">Lab Data</a> 
-            <a class="nav-link" href="/iondb.html">Ion Data</a> 
+            <a class="nav-link disabled" href="/">QCI Variants</a> 
+            <a class="nav-link" href="/gc.html">QCI GC Referrals</a> 
+            <a class="nav-link" href="/labdb.html">Lab Variants</a> 
+            <a class="nav-link" href="/iondb.html">Ion Variants</a> 
             <a class="nav-link" href="/ionrpts.html">Ion Reports</a> 
-            <a class="nav-link" href="/gc.html">GC Referrals</a> 
         </ul>
     </header>
     <section id="criteria">
         <div class="card m-4">
             <div class="card-header">
-                The <strong>QCI Data</strong> comes from the Illumina sequencer and is used to produce the official reports using QIAGEN Clinical Insight (QCI). 
-                <strong>QCI Data</strong> does not include results for the 'NGS Common' panel or unreported variants. In those two cases, use the <strong>Lab Data</strong> tab.
+                The <strong>QCI Variants</strong> come from the Illumina sequencer and are used to produce the official reports using QIAGEN Clinical Insight (QCI). 
+                The <strong>QCI Variants</strong> do not include results for the 'NGS Common' panel or unreported variants. In those two cases, use the <strong>Lab Variants</strong> tab.
                 <div>Sample Count: <span id="sampleCount"></span></div>
                 <div>Latest Sample: <span id="latestSample"></span></div>
             </div>
@@ -95,9 +95,9 @@
         <div class="card m-4">
             <div id="tableHeader" class="card-header" style="display: none;">
                 <ul>
-                    <li>Click the <strong>pdf</strong> link in the report column to download a QCI report. There is one report per sample.</li>
-                    <li>Export to a CSV file or scroll horizontally at the bottom of the table.</li>
-                    <li>Alternatively, hold down the [Shift] key and use the mouse wheel to scroll horizontally.</li>
+                    <li>Click the <strong>pdf</strong> link in the report column to download a QCI report. There is only one report per sample.</li>
+                    <li>Hold down the [Shift] key and use the mouse wheel to scroll horizontally.</li>
+                    <li><strong>Export</strong> to a CSV file at the bottom of the table.</li>
                 </ul>
             </div>
             <div class="card-body">

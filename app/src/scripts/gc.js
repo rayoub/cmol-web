@@ -1,6 +1,14 @@
 
 $(document).ready(function(){
 
+    // *** export 
+
+    $("#exportTable").click(function() { 
+
+        Export.exportTableToCSV("data.csv");
+
+    }); // end click
+
     // *** notifications
     
     $("#notifiedOrNotCheckBox").change(function() { 
@@ -54,7 +62,7 @@ $(document).ready(function(){
         $("#emptyTable").hide();
         $("tableHeader").hide();
         $("#dataTableDiv").hide(); 
-        $("#buttonTable").hide();
+        $("#exportTable").hide();
 
         $("#waitTable").show();
         $("#search").prop("disabled", true);
@@ -144,7 +152,7 @@ var doneWithGrid = function(data) {
             $("#dataTable tbody").html(tbody);
             $("#tableHeader").show();
             $("#dataTableDiv").show();
-            $("#buttonTable").show();
+            $("#exportTable").show();
         }
         else {
 

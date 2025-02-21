@@ -10,19 +10,19 @@
     <header class="m-4">
         <h3>Clinical Molecular Oncology Laboratory Website</h3>
         <ul class="nav"> 
-            <a class="nav-link" href="/">QCI Data</a> 
-            <a class="nav-link disabled" href="/">Lab Data</a> 
-            <a class="nav-link" href="/iondb.html">Ion Data</a> 
+            <a class="nav-link" href="/">QCI Variants</a> 
+            <a class="nav-link" href="/gc.html">QCI GC Referrals</a> 
+            <a class="nav-link disabled" href="/">Lab Variants</a> 
+            <a class="nav-link" href="/iondb.html">Ion Variants</a> 
             <a class="nav-link" href="/ionrpts.html">Ion Reports</a> 
-            <a class="nav-link" href="/gc.html">GC Referrals</a> 
         </ul>
     </header>
     <section id="criteria">
         <div class="card m-4">
             <div class="card-header">
-                The <strong>Lab Data</strong> comes from the Illumina sequencer and is maintained by CMOL in numerous Excel files.
-                <strong>Lab Data</strong> is more complete because it includes data for all NGS panels, including unreported variants. 
-                Searching the <strong>Lab Data</strong> by diagnosis is not ideal because the diagnoses are not maintained in a consistent format like for the <strong>QCI Data</strong>. 
+                The <strong>Lab Variants</strong> come from the Illumina sequencer and are maintained by CMOL in numerous Excel files.
+                The <strong>Lab Variants</strong> are more complete because they includes data for all NGS panels, including unreported variants. 
+                Searching the <strong>Lab Variants</strong> by diagnosis is not ideal because the diagnoses are not maintained in a consistent format like for the <strong>QCI Variants</strong>. 
                 <div>Sample Count: <span id="sampleCount"></span></div>
                 <div>Latest Sample: <span id="latestSample"></span></div>
             </div>
@@ -96,9 +96,8 @@
         <div class="card m-4">
             <div id="tableHeader" class="card-header" style="display: none;">
                 <ul>
-                    <li>Click the <strong>pdf</strong> link in the report column to download a QCI report. There is one report per accession #.</li>
-                    <li>Export to a CSV file or scroll horizontally at the bottom of the table.</li>
-                    <li>Alternatively, hold down the [Shift] key and use the mouse wheel to scroll horizontally.</li>
+                    <li>Hold down the [Shift] key and use the mouse wheel to scroll horizontally.</li>
+                    <li><strong>Export</strong> to a CSV file at the bottom of the table.</li>
                 </ul>
             </div>
             <div class="card-body">
