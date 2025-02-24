@@ -7,6 +7,30 @@
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
 </head>
 <body>
+
+    <!-- Modal -->
+    <div class="modal fade" id="criteriaModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Criteria for Genetic Counseling referrals</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <ul>
+                    <li>Any CLINICALLY REPORTED variants classified as Disease Associated or Probably Disease Associated in: ATM, BAP1, BRCA1, BRCA2, BRIP1, CEBPA, CHEK2, DDX41, ETV6, FH, FLCN, GATA2, MLH1, MSH2, MSH6, PALB2, PMS2, POLE, POT1, RAD51C, RAD51D, RET, RUNX1, SDHB, SDHC, SDHD, SUFU, TSC2, VHL@, MITF, MUTYH#</li>
+                    <li>Age based referrals: APC, NF1, RB1 and TP53^ in individuals with cancer diagnosed under the age of 30.</li> 
+                </ul>
+                # = biallelic only<br/>
+                @ = all except renal tumors<br/>
+                ^ = all except brain tumors
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+        </div>
+    </div>
     <header class="m-4">
         <h3>Clinical Molecular Oncology Laboratory Website</h3>
         <ul class="nav"> 
@@ -20,7 +44,8 @@
     <section id="criteria">
         <div class="card m-4">
             <div class="card-header">
-                Search for <strong>QCI Samples</strong> that meet the criteria for Genetic Counseling referrals. Set and unset whether or not a notification has been sent out. 
+                Search for <strong>QCI Samples</strong> that meet the <a href="#" data-bs-toggle="modal" data-bs-target="#criteriaModal">criteria</a> for Genetic Counseling referrals. 
+                Set and unset whether or not a notification has been sent out. 
             </div>
             <div class="card-body">
                 <form>
