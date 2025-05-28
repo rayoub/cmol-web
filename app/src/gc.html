@@ -90,13 +90,15 @@
                 <ul>
                     <li>Click the <strong>pdf</strong> link in the report column to download a QCI report. There is only one report per sample.</li>
                     <li>Hold down the [Shift] key and use the mouse wheel to scroll horizontally.</li>
-                    <li><strong>Export</strong> to a CSV file at the bottom of the table.</li>
                     <li>Use these buttons to set and unset whether or not a notification has been sent out.</li>
                     <div style="margin-top: 5px;">
                         <button type="button" class="btn btn-primary" id="setAsNotifiedButton">set as notified</button>
                         <button type="button" class="btn btn-primary" id="setAsNotNotifiedButton">set as not notified</button>
                     </div>
                 </ul>
+            </div>
+            <div id="exportTable" class="card-footer" style="display: none;">
+                <button type="button" class="btn btn-primary">export to csv</button>
             </div>
             <div class="card-body">
                 <div id="waitTable" class="container-fluid" style="display:none;">
@@ -138,9 +140,6 @@
                         </tbody>
                     </table>
                 </div>
-            </div>
-            <div id="exportTable" class="card-footer" style="display: none;">
-                <button type="button" class="btn btn-primary">export to csv</button>
             </div>
         </div>
     </section>
